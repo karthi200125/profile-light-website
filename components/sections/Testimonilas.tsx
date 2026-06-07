@@ -33,7 +33,7 @@ export default function Testimonials() {
     const testimonial = TESTIMONIALS[current];
 
     return (
-        <Section id="testimonials">
+        <Section id="testimonials" className="bg-white">
             <Container>
                 <div className="grid gap-16 lg:grid-cols-[260px_1fr]">
                     {/* Left */}

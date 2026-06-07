@@ -54,7 +54,7 @@ export default function FaqSection({
     const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
     return (
-        <Section id="faq">
+        <Section id="faq" className="bg-white">
             <Container>
                 <div className="grid gap-12 lg:grid-cols-[48%_52%] lg:gap-16">
 

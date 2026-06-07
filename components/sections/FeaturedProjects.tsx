@@ -10,7 +10,7 @@ import { PROJECTS } from "@/data/projects";
 
 export default function Projects() {
     return (
-        <Section id="projects">
+        <Section id="projects" className="bg-white">
             <Container>
                 <Reveal>
                     <SectionLabel>
