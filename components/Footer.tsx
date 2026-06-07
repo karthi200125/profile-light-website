@@ -5,7 +5,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 
-import { SITE_CONFIG } from "@/constants/site";
+import { siteConfig } from "@/constants/site";
 
 const QUICK_LINKS = [
     { label: "Services", href: "#services" },
@@ -87,10 +87,10 @@ export default function Footer() {
                                 </p>
 
                                 <div className="space-y-3 text-white/75">
-                                    <p>{SITE_CONFIG.phone}</p>
-                                    <p>{SITE_CONFIG.email}</p>
-                                    <p>{SITE_CONFIG.address}</p>
-                                    <p>Bangalore, Karnataka</p>
+                                    <p>{siteConfig.phone}</p>
+                                    <p>{siteConfig.email}</p>
+                                    <p>{siteConfig.address.streetAddress}</p>
+                                    <p>{siteConfig.address.addressLocality}, {siteConfig.address.addressRegion}</p>
                                 </div>
                             </div>
                         </Reveal>

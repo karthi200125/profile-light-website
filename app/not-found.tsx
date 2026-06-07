@@ -1,9 +1,153 @@
-import React from 'react'
+// app/not-found.tsx
+// ─────────────────────────────────────────────────────────────────────────────
+//  404 NOT FOUND PAGE
+//  Next.js App Router · rendered when notFound() is called or no route matches.
+//  Server Component — no "use client" needed.
+//
+//  Design: matches the site's dark neutral-950 brand aesthetic.
+//  Includes: ambient wire graphic (static SVG, no JS), navigation links,
+//  and a CTA back to home / contact.
+// ─────────────────────────────────────────────────────────────────────────────
 
-const NotFound = () => {
+import type { Metadata } from "next";
+import Link from "next/link";
+import { siteConfig } from "@/constants/site";
+
+// ─── Metadata ────────────────────────────────────────────────────────────────
+
+export const metadata: Metadata = {
+  title: `404 — Page Not Found | ${siteConfig.name}`,
+  robots: { index: false, follow: false },
+};
+
+// ─── Nav links shown on the 404 page ─────────────────────────────────────────
+
+const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Locations", href: "/profile-lighting-installation" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
+// ─── Component ───────────────────────────────────────────────────────────────
+
+export default function NotFound() {
   return (
-    <div>NotFound</div>
-  )
-}
+    <main
+      className="relative flex min-h-screen flex-col items-center justify-center
+                 overflow-hidden bg-neutral-950 px-6 text-center"
+    >
 
-export default NotFound
+      {/* ── Ambient wire SVG (static, no animation) ── */}
+      <svg
+        viewBox="0 0 1624 680"
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.04]"
+        preserveAspectRatio="xMidYMid slice"
+      >
+        <path
+          d="M1271.06 275.978H1233.56L1097.56 349.978L1070.56 362.978V568.978L1204.06 609.478H1236.06L1268.06 618.978V596.478L1554.56 665.478H1613.06M1097.56 349.978H1045.56M1045.56 349.978H873.56L867.56 324.978H525.56L386.56 240.357L1.56 5.97766M386.56 240.357L1206.56 234.978L1045.56 349.978M1045.56 349.978L1554.56 2.47766M1271.06 275.978L1546.56 140.978M1271.06 275.978V547.478"
+          fill="none"
+          stroke="#FFD89A"
+          strokeWidth="1.5"
+        />
+      </svg>
+
+      {/* ── Radial glow behind the 404 number ── */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/2
+                   h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2
+                   rounded-full bg-amber-300/5 blur-[120px]"
+      />
+
+      {/* ── Content ── */}
+      <div className="relative z-10 flex flex-col items-center gap-8">
+
+        {/* Large 404 */}
+        <p
+          className="select-none font-display font-light uppercase leading-none
+                     text-white/[0.04]"
+          style={{ fontSize: "clamp(120px, 25vw, 280px)", letterSpacing: "-0.05em" }}
+          aria-hidden="true"
+        >
+          404
+        </p>
+
+        {/* Eyebrow */}
+        <p className="absolute top-1/2 -translate-y-1/2 text-xs font-medium
+                      uppercase tracking-[0.25em] text-amber-300/70">
+          Page Not Found
+        </p>
+
+        {/* Headline */}
+        <div className="-mt-4 flex flex-col items-center gap-4">
+          <h1
+            className="font-display font-light uppercase text-white"
+            style={{ fontSize: "clamp(28px, 5vw, 56px)", letterSpacing: "-0.04em", lineHeight: 1 }}
+          >
+            Lights Out.
+          </h1>
+
+          <p className="max-w-sm text-sm leading-7 text-white/50">
+            The page you&apos;re looking for doesn&apos;t exist or has been moved.
+            Let&apos;s get you back on track.
+          </p>
+        </div>
+
+        {/* Divider */}
+        <div className="h-px w-24 bg-white/10" aria-hidden="true" />
+
+        {/* Primary CTA */}
+        <div className="flex flex-wrap justify-center gap-4">
+          <Link
+            href="/"
+            className="group inline-flex items-center gap-3 rounded-full bg-amber-300
+                       px-7 py-3.5 text-sm font-medium text-neutral-900
+                       transition-all duration-300 hover:bg-amber-200 hover:gap-4
+                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-300"
+          >
+            Back to Home
+            <span className="transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true">
+              ↗
+            </span>
+          </Link>
+
+          <Link
+            href="/contact"
+            className="group relative inline-flex items-center gap-2 pb-1 text-sm
+                       text-white/70 transition-colors duration-300 hover:text-white
+                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/40"
+          >
+            Contact Us
+            <span className="transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true">
+              ↗
+            </span>
+            <span className="absolute bottom-0 left-0 h-px w-full bg-white/20" aria-hidden="true" />
+            <span className="absolute bottom-0 left-0 h-px w-0 bg-white/60
+                             transition-all duration-300 group-hover:w-full" aria-hidden="true" />
+          </Link>
+        </div>
+
+        {/* Secondary nav */}
+        <nav aria-label="Helpful links" className="mt-2">
+          <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            {NAV_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-xs text-white/30 transition-colors duration-200
+                             hover:text-white/70"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+      </div>
+    </main>
+  );
+}

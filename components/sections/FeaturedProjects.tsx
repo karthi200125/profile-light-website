@@ -43,6 +43,9 @@ export default function Projects() {
                                                 src={project.image}
                                                 alt={project.title}
                                                 fill
+                                                sizes="(max-width: 1024px) 100vw, 48vw"
+                                                quality={90}
+                                                draggable={false}
                                                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                                             />
                                         </div>

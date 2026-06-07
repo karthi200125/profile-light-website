@@ -5,7 +5,7 @@ import Section from "@/components/ui/Section";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Reveal from "@/components/ui/Reveal";
 
-import { SITE_CONFIG } from "@/constants/site";
+import { siteConfig } from "@/constants/site";
 
 export default function CTA() {
     return (
@@ -36,7 +36,7 @@ export default function CTA() {
 
                             <div className="mt-12 space-y-2">
                                 <a
-                                    href={`https://wa.me/${SITE_CONFIG.whatsapp}`}
+                                    href={`https://wa.me/${siteConfig.whatsapp}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="group flex items-center justify-between border-b border-white/10 py-5"
@@ -49,7 +49,7 @@ export default function CTA() {
                                 </a>
 
                                 <a
-                                    href={`tel:${SITE_CONFIG.phone}`}
+                                    href={`tel:${siteConfig.phone}`}
                                     className="group flex items-center justify-between border-b border-white/10 py-5"
                                 >
                                     <span className="text-xl">

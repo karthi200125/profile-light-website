@@ -1,81 +1,112 @@
 "use client";
 
 import { useState } from "react";
-
 import Image from "next/image";
-
 import { Minus, Plus } from "lucide-react";
-
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Reveal from "@/components/ui/Reveal";
 
-import { FAQS } from "@/data/faq";
+// ─── Types ────────────────────────────────────────────────────────────────────
 
-export default function FAQ() {
-    const [activeFaq, setActiveFaq] = useState("01");
+export type FaqItem = {
+    question: string;
+    answer: string;
+};
+
+export type FaqSectionProps = {
+    /** Section heading — e.g. "Answers to common questions about profile lighting." */
+    heading: string;
+
+    /** Short label shown above the heading in the SectionLabel pill */
+    subheading?: string;
+
+    /** The FAQ items to render */
+    faqs: FaqItem[];
+
+    /**
+     * Image shown on the left column.
+     * Defaults to /hero-off.png when omitted.
+     */
+    image?: {
+        src: string;
+        alt: string;
+    };
+};
+
+// ─── Default values ───────────────────────────────────────────────────────────
+
+const DEFAULT_IMAGE = {
+    src: "/hero-off.png",
+    alt: "Profile lighting installation in Bangalore",
+};
+
+// ─── FaqSection ───────────────────────────────────────────────────────────────
+
+export default function FaqSection({
+    heading,
+    subheading = "Frequently Asked Questions",
+    faqs,
+    image = DEFAULT_IMAGE,
+}: FaqSectionProps) {
+    // Use index as the active key — no dependency on an `id` field
+    const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
     return (
         <Section id="faq">
             <Container>
                 <div className="grid gap-12 lg:grid-cols-[48%_52%] lg:gap-16">
-                    {/* Left */}
 
+                    {/* ── Left: image ── */}
                     <Reveal>
                         <div className="relative overflow-hidden">
                             <div className="relative aspect-[4/5] lg:h-[780px]">
                                 <Image
-                                    src="/hero-off.png"
-                                    alt="Profile lighting installation in Bangalore"
+                                    src={image.src}
+                                    alt={image.alt}
                                     fill
+                                    sizes="(max-width: 1024px) 100vw, 48vw"
+                                    quality={90}
+                                    draggable={false}
                                     className="object-cover"
                                 />
                             </div>
                         </div>
                     </Reveal>
 
-                    {/* Right */}
-
+                    {/* ── Right: accordion ── */}
                     <div>
                         <Reveal>
-                            <SectionLabel>
-                                Frequently Asked Questions
-                            </SectionLabel>
+                            <SectionLabel>{subheading}</SectionLabel>
                         </Reveal>
 
                         <Reveal>
                             <h2 className="mt-8 max-w-3xl text-4xl font-medium leading-none tracking-[-0.04em] text-[#111111] md:text-5xl lg:text-[3.5rem]">
-                                Answers to common questions about profile lighting installations.
+                                {heading}
                             </h2>
                         </Reveal>
 
                         <div className="mt-14">
-                            {FAQS.map((faq) => {
-                                const active = activeFaq === faq.id;
+                            {faqs.map((faq, index) => {
+                                const active = activeIndex === index;
+                                // Zero-padded display number: 01, 02 … 10, 11
+                                const displayId = String(index + 1).padStart(2, "0");
 
                                 return (
-                                    <div
-                                        key={faq.id}
-                                        className="border-b border-black/10"
-                                    >
+                                    <div key={index} className="border-b border-black/10">
                                         <button
-                                            onClick={() =>
-                                                setActiveFaq(active ? "" : faq.id)
-                                            }
-                                            className={`w-full text-left transition-all duration-300 ${active
-                                                    ? "bg-black text-white"
-                                                    : "bg-transparent text-[#111111]"
+                                            onClick={() => setActiveIndex(active ? null : index)}
+                                            aria-expanded={active}
+                                            className={`w-full text-left transition-all duration-300 ${active ? "bg-black text-white" : "bg-transparent text-[#111111]"
                                                 }`}
                                         >
                                             <div className="flex gap-6 p-6">
                                                 <span
-                                                    className={`mt-1 min-w-[28px] text-xs ${active
-                                                            ? "text-white/50"
-                                                            : "text-black/50"
+                                                    className={`mt-1 min-w-[28px] text-xs ${active ? "text-white/50" : "text-black/50"
                                                         }`}
                                                 >
-                                                    {faq.id}
+                                                    {displayId}
                                                 </span>
 
                                                 <div className="flex-1">
@@ -92,15 +123,11 @@ export default function FAQ() {
                                                     </div>
 
                                                     <div
-                                                        className={`overflow-hidden transition-all duration-500 ${active
-                                                                ? "mt-4 max-h-64 opacity-100"
-                                                                : "max-h-0 opacity-0"
+                                                        className={`overflow-hidden transition-all duration-500 ${active ? "mt-4 max-h-64 opacity-100" : "max-h-0 opacity-0"
                                                             }`}
                                                     >
                                                         <p
-                                                            className={`max-w-xl text-sm leading-7 ${active
-                                                                    ? "text-white/75"
-                                                                    : ""
+                                                            className={`max-w-xl text-sm leading-7 ${active ? "text-white/75" : ""
                                                                 }`}
                                                         >
                                                             {faq.answer}
@@ -114,6 +141,7 @@ export default function FAQ() {
                             })}
                         </div>
                     </div>
+
                 </div>
             </Container>
         </Section>
