@@ -130,14 +130,12 @@ export default function manifest(): MetadataRoute.Manifest {
             {
                 src: "/screenshots/desktop-home.jpg",
                 sizes: "1280x720",
-                // @ts-expect-error — "wide" is valid in the spec but not yet in TS types
                 form_factor: "wide",
                 label: "StraightLine — Premium Profile Lighting",
             },
             {
                 src: "/screenshots/mobile-home.jpg",
                 sizes: "390x844",
-                // @ts-expect-error
                 form_factor: "narrow",
                 label: "StraightLine — Profile Lighting Bangalore",
             },
