@@ -1,7 +1,4 @@
-// ============================================================
-//  PROFILE LIGHTING — LOCATION DATA LAYER
-//  Production-grade · Bangalore · Dynamic Page Dataset
-// ============================================================
+import { siteConfig } from "@/constants/site";
 
 export type PropertyType =
   | "Apartments"
@@ -36,23 +33,23 @@ export type Testimonial = {
   name: string;
   location: string;
   propertyType: string;
-  rating: number; // 1–5
+  rating: number; 
   review: string;
 };
 
 export type Location = {
-  // ── Core identity ──────────────────────────────────────────
+
   slug: string;
   name: string;
   region: "East" | "South" | "West" | "North" | "Central";
 
-  // ── SEO ────────────────────────────────────────────────────
-  title: string;
-  metaTitle: string;        // ≤ 60 chars
-  metaDescription: string;  // ≤ 160 chars
-  canonicalPath: string;    // /profile-lighting-installation/<slug>
 
-  // ── Hero section ───────────────────────────────────────────
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
+  canonicalPath: string;
+
+
   heroHeadline: string;
   heroSubheadline: string;
   heroCTA: {
@@ -60,50 +57,47 @@ export type Location = {
     secondary: { label: string; href: string };
   };
 
-  // ── About / intro paragraph ────────────────────────────────
-  description: string;           // short 1-liner for cards / breadcrumbs
-  longDescription: string;       // 2–3 sentence rich intro for the page body
 
-  // ── Geography ──────────────────────────────────────────────
+  description: string;
+  longDescription: string;
+
+
   nearbyAreas: string[];
-  landmarks: string[];           // prominent landmarks / IT parks / malls nearby
+  landmarks: string[];
 
-  // ── Services ───────────────────────────────────────────────
+
   propertyTypes: PropertyType[];
   serviceHighlights: ServiceHighlight[];
 
-  // ── Social proof ───────────────────────────────────────────
+
   stats: {
-    projectsCompleted: number;   // approximate
+    projectsCompleted: number;
     happyClients: number;
     yearsServing: number;
-    avgRating: number;           // out of 5
+    avgRating: number;
   };
   testimonials: Testimonial[];
 
-  // ── FAQ ────────────────────────────────────────────────────
+
   faqs: FAQ[];
 
-  // ── Schema.org / structured data ───────────────────────────
+
   schema: {
     areaServed: string;
     serviceType: string;
     provider: string;
     telephone: string;
-    priceRange: string; // e.g. "₹₹–₹₹₹"
+    priceRange: string;
   };
 
-  // ── Sitemap ────────────────────────────────────────────────
-  priority: number;         // 0.0 – 1.0
+
+  priority: number;
   changefreq: "daily" | "weekly" | "monthly";
 };
 
-// ============================================================
-//  FACTORY
-// ============================================================
 
-const PHONE = "+91-99001-00000"; // ← replace with real number
-const COMPANY = "Lumina Profile Lights";  // ← replace with real brand
+const PHONE = siteConfig.phone.replace(/\D/g, "");
+const COMPANY = siteConfig.legalName || siteConfig.name;
 
 const createLocation = (
   slug: string,

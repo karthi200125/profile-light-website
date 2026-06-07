@@ -5,16 +5,24 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/Footer";
 
 import HeroSection from "@/components/sections/HeroSection";
+import AboutSection from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import Projects from "@/components/sections/FeaturedProjects";
+import Testimonials from "@/components/sections/Testimonilas";
+import FaqSection from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 
-
 import { LOCATIONS } from "@/data/locations";
-import FaqSection from "@/components/sections/FAQ";
-import AboutSection from "@/components/sections/About";
-import Testimonials from "@/components/sections/Testimonilas";
+
+import { siteConfig } from "@/constants/site";
+
+import {
+    buildLocationSchema,
+    buildFaqSchema,
+    buildBreadcrumbSchema,
+    toJsonLd,
+} from "@/lib/schema";
 
 type LocationSlug = keyof typeof LOCATIONS;
 
@@ -25,9 +33,11 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-    return Object.keys(LOCATIONS).map((location) => ({
-        location,
-    }));
+    return Object.keys(LOCATIONS).map(
+        (location) => ({
+            location,
+        })
+    );
 }
 
 export async function generateMetadata({
@@ -47,11 +57,13 @@ export async function generateMetadata({
     }
 
     const canonicalUrl =
-        `https://straightline.in/${location}`;
+        `${siteConfig.url}${data.canonicalPath}`;
 
     return {
         title: data.metaTitle,
-        description: data.metaDescription,
+
+        description:
+            data.metaDescription,
 
         alternates: {
             canonical: canonicalUrl,
@@ -59,38 +71,49 @@ export async function generateMetadata({
 
         openGraph: {
             title: data.metaTitle,
-            description: data.metaDescription,
+
+            description:
+                data.metaDescription,
+
             url: canonicalUrl,
-            siteName: "StraightLine",
+
+            siteName:
+                siteConfig.name,
+
             locale: "en_IN",
+
             type: "website",
+
             images: [
                 {
-                    url: "/og-image.jpg",
+                    url: siteConfig.ogImage,
+
                     width: 1200,
+
                     height: 630,
+
                     alt: data.metaTitle,
                 },
             ],
         },
 
         twitter: {
-            card: "summary_large_image",
+            card:
+                "summary_large_image",
+
             title: data.metaTitle,
-            description: data.metaDescription,
-            images: ["/og-image.jpg"],
+
+            description:
+                data.metaDescription,
+
+            images: [
+                siteConfig.ogImage,
+            ],
         },
 
         robots: {
             index: true,
             follow: true,
-            googleBot: {
-                index: true,
-                follow: true,
-                "max-video-preview": -1,
-                "max-image-preview": "large",
-                "max-snippet": -1,
-            },
         },
     };
 }
@@ -98,7 +121,8 @@ export async function generateMetadata({
 export default async function LocationPage({
     params,
 }: PageProps) {
-    const { location } = await params;
+    const { location } =
+        await params;
 
     const data =
         LOCATIONS[
@@ -109,42 +133,60 @@ export default async function LocationPage({
         notFound();
     }
 
-    const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        name: "StraightLine",
-        description: data.metaDescription,
-        areaServed: data.name,
-        telephone: "+91XXXXXXXXXX",
-        address: {
-            "@type": "PostalAddress",
-            addressLocality: data.name,
-            addressRegion: "Karnataka",
-            addressCountry: "IN",
-        },
-    };
+    const schemas = [
+        buildLocationSchema(data),
+
+        buildFaqSchema(data.faqs),
+
+        buildBreadcrumbSchema([
+            {
+                name: "Home",
+                href: "/",
+            },
+
+            {
+                name:
+                    "Profile Lighting Installation",
+                href:
+                    "/",
+            },
+
+            {
+                name: data.name,
+                href:
+                    data.canonicalPath,
+            },
+        ]),
+    ];
 
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify(jsonLd),
-                }}
-            />
+            {schemas.map(
+                (schema, index) => (
+                    <script
+                        key={index}
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html:
+                                toJsonLd(schema),
+                        }}
+                    />
+                )
+            )}
 
             <Navbar />
 
             <main>
                 <HeroSection
                     eyebrow={`${data.name} · Bangalore`}
-                    headline={data.heroHeadline}
-                    description={data.heroSubheadline}
-                    ctas={[
-                        data.heroCTA.primary,
-                        data.heroCTA.secondary,
-                    ]}
+                    headline={
+                        data.heroHeadline
+                    }
+                    description={
+                        data.heroSubheadline
+                    }                    
                 />
+
                 <AboutSection />
 
                 <Services />

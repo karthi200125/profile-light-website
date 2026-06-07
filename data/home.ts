@@ -1,23 +1,9 @@
-// data/home.ts
-// ─────────────────────────────────────────────────────────────────────────────
-//  HOME PAGE DATA
-//  Single source of truth for the home page hero and FAQ sections.
-//  Import these objects directly into app/page.tsx — no API call needed.
-// ─────────────────────────────────────────────────────────────────────────────
 
-import { type HeroCTA } from "@/components/ui/CtaButton";
-import { type FAQ } from "@/data/locations"; // re-use the shared FAQ type
-
-// ─── Hero ─────────────────────────────────────────────────────────────────────
+import { type FAQ } from "@/data/locations";
 
 export type HomeHeroData = {
-  /** Two-line split headline passed to HeroSection */
   headline: [string, string];
-  /** Supporting paragraph below the divider */
   description: string;
-  /** Primary + secondary CTAs */
-  ctas: [HeroCTA, HeroCTA];
-  /** No eyebrow on the home page — location pages use this field */
   eyebrow?: never;
 };
 
@@ -25,11 +11,8 @@ export const homeHero: HomeHeroData = {
   headline: ["Design That", "Illuminates"],
   description:
     "StraightLine creates premium profile lighting solutions tailored to modern homes, villas, offices and commercial spaces across Bangalore.",
-  ctas: [
-    { label: "Get Free Consultation", href: "/contact", variant: "solid" },
-    { label: "View Projects",         href: "/projects", variant: "ghost" },
-  ],
 };
+
 
 // ─── FAQ ──────────────────────────────────────────────────────────────────────
 

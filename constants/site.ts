@@ -16,7 +16,7 @@ export const siteConfig = {
   foundedYear: 2022,
   serviceArea: "Bangalore",
 
-  ogImage: process.env.NEXT_PUBLIC_OG_IMAGE!,
+  ogImage: process.env.NEXT_PUBLIC_OG_IMAGE!,  
   social: {
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM ?? "",
     youtube: process.env.NEXT_PUBLIC_YOUTUBE ?? "",

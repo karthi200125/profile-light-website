@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: "/opengraph-image.png",
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} — Premium Profile Lighting in Bangalore`,
@@ -88,18 +88,18 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} — Premium Profile Lighting in Bangalore`,
     description: siteConfig.description,
-    images: ["/opengraph-image.png"],
-    // creator: "@yourhandle",
+    images: [siteConfig.ogImage],
+    creator: "@yourhandle",
   },
 
   // ── Icons ─────────────────────────────────────────────────────────────────
   icons: {
     icon: [
-      { url: "/icons/icon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/icons/icon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-32x32.webp", sizes: "32x32", type: "image/webp" },
+      { url: "/icons/icon-96x96.webp", sizes: "96x96", type: "image/webp" },
+      { url: "/icons/icon-192x192.webp", sizes: "192x192", type: "image/webp" },
     ],
-    apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
     shortcut: [{ url: "/favicon.ico" }],
   },
 
@@ -125,13 +125,8 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
 };
 
-// ─── GTM ID ───────────────────────────────────────────────────────────────────
-// Set in .env.local:  NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
-// Undefined in dev → no GTM scripts injected at all
-
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
-// ─── Root Layout ──────────────────────────────────────────────────────────────
 
 export default function RootLayout({
   children,
@@ -140,10 +135,9 @@ export default function RootLayout({
     <html
       lang="en-IN"
       className={`${geistSans.variable} ${geistMono.variable}`}
-      suppressHydrationWarning  // prevents hydration mismatch from browser extensions
+      suppressHydrationWarning
     >
       <head>
-        {/* ── Global JSON-LD: injected once, available on every page ── */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: toJsonLd(buildOrganizationSchema()) }}
@@ -168,7 +162,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </head>
 
       <body className="bg-neutral-950 font-sans antialiased">
-        {/* ── GTM no-script fallback — required for full GTM data collection ── */}
         {GTM_ID && (
           <noscript>
             <iframe

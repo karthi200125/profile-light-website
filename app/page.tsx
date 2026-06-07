@@ -13,27 +13,34 @@ import WhyChooseUs from "@/components/sections/WhyChooseUs";
 
 import { homeFaq, homeHero } from "@/data/home";
 
+import { siteConfig } from "@/constants/site";
+
+import {
+  buildFaqSchema,
+  buildLocalBusinessSchema,
+  buildOrganizationSchema,
+  toJsonLd,
+} from "@/lib/schema";
+
 export const metadata: Metadata = {
   title:
     "Profile Lighting Installation Bangalore | StraightLine",
 
-  description:
-    "StraightLine provides premium profile lighting installation services across Bangalore for homes, villas, apartments, offices and commercial interiors.",
+  description: siteConfig.description,
 
   alternates: {
-    canonical: "https://yourdomain.com",
+    canonical: siteConfig.url,
   },
 
   openGraph: {
     title:
       "Profile Lighting Installation Bangalore | StraightLine",
 
-    description:
-      "Premium profile lighting solutions across Bangalore.",
+    description: siteConfig.description,
 
-    url: "https://yourdomain.com",
+    url: siteConfig.url,
 
-    siteName: "StraightLine",
+    siteName: siteConfig.name,
 
     locale: "en_IN",
 
@@ -41,10 +48,10 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "/og-image.jpg",
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "StraightLine Profile Lighting",
+        alt: `${siteConfig.name} Profile Lighting`,
       },
     ],
   },
@@ -55,10 +62,9 @@ export const metadata: Metadata = {
     title:
       "Profile Lighting Installation Bangalore | StraightLine",
 
-    description:
-      "Premium profile lighting solutions across Bangalore.",
+    description: siteConfig.description,
 
-    images: ["/og-image.jpg"],
+    images: [siteConfig.ogImage],
   },
 
   robots: {
@@ -68,41 +74,28 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-
-    name: "StraightLine",
-
-    description:
-      "Premium profile lighting installation services across Bangalore.",
-
-    areaServed: "Bangalore",
-
-    address: {
-      "@type": "PostalAddress",
-      addressRegion: "Karnataka",
-      addressCountry: "IN",
-    },
-
-    url: "https://yourdomain.com",
-  };
+  const schemas = [
+    buildOrganizationSchema(),
+    buildLocalBusinessSchema(),
+    buildFaqSchema(homeFaq.faqs),
+  ];
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd),
-        }}
-      />
-      
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: toJsonLd(schema),
+          }}
+        />
+      ))}
 
       <main>
         <HeroSection
           headline={homeHero.headline}
           description={homeHero.description}
-          ctas={homeHero.ctas}
         />
 
         <AboutSection />
