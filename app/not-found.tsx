@@ -1,26 +1,11 @@
-// app/not-found.tsx
-// ─────────────────────────────────────────────────────────────────────────────
-//  404 NOT FOUND PAGE
-//  Next.js App Router · rendered when notFound() is called or no route matches.
-//  Server Component — no "use client" needed.
-//
-//  Design: matches the site's dark neutral-950 brand aesthetic.
-//  Includes: ambient wire graphic (static SVG, no JS), navigation links,
-//  and a CTA back to home / contact.
-// ─────────────────────────────────────────────────────────────────────────────
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/constants/site";
-
-// ─── Metadata ────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
   title: `404 — Page Not Found | ${siteConfig.name}`,
   robots: { index: false, follow: false },
 };
-
-// ─── Nav links shown on the 404 page ─────────────────────────────────────────
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -30,31 +15,14 @@ const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
-// ─── Component ───────────────────────────────────────────────────────────────
-
 export default function NotFound() {
   return (
     <main
       className="relative flex min-h-screen flex-col items-center justify-center
                  overflow-hidden bg-neutral-950 px-6 text-center"
     >
-
-      {/* ── Ambient wire SVG (static, no animation) ── */}
-      <svg
-        viewBox="0 0 1624 680"
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.04]"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <path
-          d="M1271.06 275.978H1233.56L1097.56 349.978L1070.56 362.978V568.978L1204.06 609.478H1236.06L1268.06 618.978V596.478L1554.56 665.478H1613.06M1097.56 349.978H1045.56M1045.56 349.978H873.56L867.56 324.978H525.56L386.56 240.357L1.56 5.97766M386.56 240.357L1206.56 234.978L1045.56 349.978M1045.56 349.978L1554.56 2.47766M1271.06 275.978L1546.56 140.978M1271.06 275.978V547.478"
-          fill="none"
-          stroke="#FFD89A"
-          strokeWidth="1.5"
-        />
-      </svg>
-
-      {/* ── Radial glow behind the 404 number ── */}
+      
+      
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-1/2
@@ -76,8 +44,7 @@ export default function NotFound() {
         </p>
 
         {/* Eyebrow */}
-        <p className="absolute top-1/2 -translate-y-1/2 text-xs font-medium
-                      uppercase tracking-[0.25em] text-amber-300/70">
+        <p className="text-xs font-medium uppercase tracking-[0.25em] text-white">
           Page Not Found
         </p>
 

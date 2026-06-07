@@ -1,50 +1,21 @@
 "use client";
 
-// app/error.tsx
-// ─────────────────────────────────────────────────────────────────────────────
-//  ERROR BOUNDARY
-//  Next.js App Router · Client Component (required by Next.js)
-//
-//  Catches runtime errors thrown inside the root layout's children.
-//  Must be "use client" — Next.js hard requirement for error.tsx.
-//
-//  What this does:
-//   • Logs the error + sends to your error tracker in prod
-//   • Shows a branded recovery UI — never a blank white screen
-//   • Reset (retry) button + Home navigation
-//   • Error reference ID for support traceability
-//   • digest shown in dev only — never exposed to users in prod
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { useEffect, useId } from "react";
 import Link from "next/link";
-
-// ─── Types ────────────────────────────────────────────────────────────────────
-
 type ErrorPageProps = {
     error: Error & { digest?: string };
     reset: () => void;
 };
 
-// ─── Error reporter ───────────────────────────────────────────────────────────
-// Swap console.error for your real error tracker in production.
-// e.g. Sentry:  Sentry.captureException(error, { extra: { referenceId } })
-// e.g. Datadog: datadogRum.addError(error)
-
 function reportError(error: Error & { digest?: string }, referenceId: string) {
-    if (process.env.NODE_ENV === "production") {
-        // TODO: replace with your error tracking SDK
-        // Sentry.captureException(error, { extra: { referenceId } });
+    if (process.env.NODE_ENV === "production") {        
         console.error("[ErrorBoundary]", referenceId, error);
     } else {
         console.error("[ErrorBoundary — dev]", { referenceId, digest: error.digest, error });
     }
 }
 
-// ─── Component ───────────────────────────────────────────────────────────────
-
 export default function ErrorPage({ error, reset }: ErrorPageProps) {
-    // Stable ID used as a support reference — unique per render
     const referenceId = useId().replace(/:/g, "").slice(0, 8).toUpperCase();
     const isDev = process.env.NODE_ENV === "development";
 
@@ -56,22 +27,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
         <main
             className="relative flex min-h-screen flex-col items-center justify-center
                  overflow-hidden bg-neutral-950 px-6 text-center"
-        >
-            {/* ── Ambient wire SVG (static) ── */}
-            <svg
-                viewBox="0 0 1624 680"
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 h-full w-full opacity-[0.04]"
-                preserveAspectRatio="xMidYMid slice"
-            >
-                <path
-                    d="M1271.06 275.978H1233.56L1097.56 349.978L1070.56 362.978V568.978L1204.06 609.478H1236.06L1268.06 618.978V596.478L1554.56 665.478H1613.06M1097.56 349.978H1045.56M1045.56 349.978H873.56L867.56 324.978H525.56L386.56 240.357L1.56 5.97766M386.56 240.357L1206.56 234.978L1045.56 349.978M1045.56 349.978L1554.56 2.47766M1271.06 275.978L1546.56 140.978M1271.06 275.978V547.478"
-                    fill="none"
-                    stroke="#FFD89A"
-                    strokeWidth="1.5"
-                />
-            </svg>
-
+        >            
             {/* ── Radial glow — red tint signals error state ── */}
             <div
                 aria-hidden="true"

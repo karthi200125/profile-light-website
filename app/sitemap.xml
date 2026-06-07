@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ═══════════════════════════════════════════════════════════════════
+  SITEMAP  ·  StraightLine — Premium Profile Lighting, Bangalore
+  ═══════════════════════════════════════════════════════════════════
+  Spec:     https://www.sitemaps.org/protocol.html
+  Max URLs: 50,000 per file / 50 MB uncompressed
+  Submit:   Google Search Console → Sitemaps
+            https://search.google.com/search-console
+
+  ┌─ Priority guide (your editorial policy) ──────────────────────┐
+  │  1.0  Home                                                     │
+  │  0.9  Core service pages + high-traffic location pages        │
+  │  0.8  Mid-tier location pages                                 │
+  │  0.7  Lower-volume location pages                             │
+  │  0.5  Supporting pages (about, blog posts)                    │
+  └────────────────────────────────────────────────────────────────┘
+
+  ⚠️  lastmod = date this file was last edited.
+      Update it whenever page content changes significantly.
+      ISO 8601 format (YYYY-MM-DD).
+
+  If this file grows beyond 50,000 URLs, split into:
+    sitemap-static.xml
+    sitemap-locations.xml
+  and reference both from a sitemap index file (sitemap-index.xml).
+  ═══════════════════════════════════════════════════════════════════
+-->
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="
+    http://www.sitemaps.org/schemas/sitemap/0.9
+    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       STATIC PAGES
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- Home -->
+  <url>
+    <loc>https://www.straightline.in/</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Services -->
+  <url>
+    <loc>https://www.straightline.in/services</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Locations index -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Projects -->
+  <url>
+    <loc>https://www.straightline.in/projects</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://www.straightline.in/contact</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://www.straightline.in/about</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       LOCATION PAGES — EAST BANGALORE
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- Whitefield · priority 1.0 — flagship east location -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/whitefield</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Indiranagar · priority 0.9 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/indiranagar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Marathahalli · priority 0.9 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/marathahalli</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Bellandur · priority 0.9 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/bellandur</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Brookefield · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/brookefield</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Varthur · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/varthur</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Hoodi · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/hoodi</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Mahadevapura · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/mahadevapura</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- KR Puram · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/kr-puram</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Panathur · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/panathur</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Ramamurthy Nagar · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/ramamurthy-nagar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Horamavu · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/horamavu</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Kaggadasapura · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/kaggadasapura</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- CV Raman Nagar · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/cv-raman-nagar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Kadubeesanahalli · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/kadubeesanahalli</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       LOCATION PAGES — SOUTH BANGALORE
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- Koramangala · priority 1.0 — flagship south location -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/koramangala</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Sarjapur Road · priority 0.9 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/sarjapur-road</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- HSR Layout · priority 0.9 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/hsr-layout</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Electronic City · priority 0.9 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/electronic-city</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- JP Nagar · priority 0.9 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/jp-nagar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Jayanagar · priority 0.9 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/jayanagar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Bannerghatta Road · priority 0.9 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/bannerghatta-road</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- MG Road · priority 0.9 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/mg-road</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Banashankari · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/banashankari</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Kanakapura Road · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/kanakapura-road</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- BTM Layout · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/btm-layout</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Uttarahalli · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/uttarahalli</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Begur Road · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/begur-road</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       LOCATION PAGES — NORTH BANGALORE
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- Hebbal · priority 0.9 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/hebbal</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Yelahanka · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/yelahanka</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Thanisandra · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/thanisandra</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Nagawara · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/nagawara</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Devanahalli · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/devanahalli</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Hennur Road · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/hennur-road</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Jakkur · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/jakkur</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Sahakar Nagar · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/sahakar-nagar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- RT Nagar · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/rt-nagar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       LOCATION PAGES — WEST BANGALORE
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- Rajajinagar · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/rajajinagar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Malleswaram · priority 0.8 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/malleswaram</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Vijayanagar · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/vijayanagar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Kengeri · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/kengeri</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Rajarajeshwari Nagar · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/rr-nagar</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Old Madras Road · priority 0.7 -->
+  <url>
+    <loc>https://www.straightline.in/profile-lighting-installation/old-madras-road</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

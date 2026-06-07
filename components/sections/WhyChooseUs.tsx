@@ -72,9 +72,11 @@ export default function WhyChooseUs() {
 
                         <Reveal>
                             <div className="mt-10">
-                                <Button href="#projects" className="bg-white !text-[#111111] hover:bg-white/90">
-                                    View Projects
-                                </Button>
+                                <Button
+                                    label="View Projects"
+                                    href="/projects"
+                                    variant="solid"
+                                />
                             </div>
                         </Reveal>
 

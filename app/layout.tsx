@@ -1,16 +1,3 @@
-// app/layout.tsx
-// ─────────────────────────────────────────────────────────────────────────────
-//  ROOT LAYOUT
-//  Next.js App Router · Server Component
-//
-//  Responsibilities:
-//   • Global metadata + Open Graph + Twitter card
-//   • Viewport / theme-color
-//   • Font optimisation (next/font — zero CLS, self-hosted)
-//   • Global JSON-LD schema (Organization + LocalBusiness)
-//   • Google Tag Manager (no-JS fallback included)
-// ─────────────────────────────────────────────────────────────────────────────
-
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -22,12 +9,8 @@ import {
   buildLocalBusinessSchema,
   toJsonLd,
 } from "@/lib/schema";
-
-// ─── Fonts ────────────────────────────────────────────────────────────────────
-// next/font downloads and self-hosts at build time:
-//  • Zero layout shift — size-adjust + fallback metrics handled automatically
-//  • No third-party network request to Google at runtime
-//  • swap display — text visible immediately with fallback font
+import WhatsappFloat from "@/components/WhatsappFloat";
+import Navbar from "@/components/navbar/Navbar";
 
 const geistSans = Geist({
   variable: "--font-sans",
@@ -40,28 +23,22 @@ const geistMono = Geist_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
-  preload: false, // mono used only in code blocks — defer
+  preload: false,
 });
-
-// ─── Viewport & Theme Color ───────────────────────────────────────────────────
-// Exported separately per Next.js 14+ spec — must NOT be inside metadata.
-// theme-color matches brand dark on both colour schemes.
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,   // allow user zoom — WCAG 2.1 requirement
-  // themeColor: [
-  //   { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  //   { media: "(prefers-color-scheme: light)", color: "#0a0a0a" },
-  // ],
-  // colorScheme: "dark",
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#0a0a0a" },
+  ],
+  colorScheme: "dark",
 };
 
-// ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  // ── Core ──────────────────────────────────────────────────────────────────
   metadataBase: new URL(siteConfig.url),
   title: {
     default: `${siteConfig.name} — Premium Profile Lighting in Bangalore`,
@@ -84,12 +61,11 @@ export const metadata: Metadata = {
   creator: siteConfig.legalName,
   publisher: siteConfig.legalName,
 
-  // ── Canonical ─────────────────────────────────────────────────────────────
+
   alternates: {
     canonical: siteConfig.url,
   },
 
-  // ── Open Graph ────────────────────────────────────────────────────────────
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -99,7 +75,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: "/opengraph-image.png", // resolved against metadataBase
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: `${siteConfig.name} — Premium Profile Lighting in Bangalore`,
@@ -146,7 +122,6 @@ export const metadata: Metadata = {
     },
   },
 
-  // ── PWA manifest ──────────────────────────────────────────────────────────
   manifest: "/manifest.webmanifest",
 };
 
@@ -204,8 +179,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
         )}
-
+        <Navbar />
         {children}
+        <WhatsappFloat />
       </body>
     </html>
   );

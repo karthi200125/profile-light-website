@@ -19,7 +19,7 @@ export default function Logo({
             className={className}
         >
             <Image
-                src="/logo.webp"
+                src="/logo.png"
                 alt="StraightLine Profile Lighting"
                 width={width}
                 height={height}

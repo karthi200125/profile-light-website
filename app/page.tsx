@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import Footer from "@/components/Footer";
-import Navbar from "@/components/navbar/Navbar";
 
 import AboutSection from "@/components/sections/About";
 import CTA from "@/components/sections/CTA";
@@ -97,8 +96,7 @@ export default function HomePage() {
           __html: JSON.stringify(jsonLd),
         }}
       />
-
-      <Navbar />
+      
 
       <main>
         <HeroSection

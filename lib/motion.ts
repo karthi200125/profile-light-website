@@ -167,3 +167,91 @@ export const dividerVariants: Variants = {
     },
   },
 };
+
+export const navbarVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: -12,
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+export const mobilePanelVariants: Variants = {
+  hidden: {
+    x: "-100%",
+  },
+
+  visible: {
+    x: 0,
+
+    transition: {
+      duration: 0.48,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+
+  exit: {
+    x: "-100%",
+
+    transition: {
+      duration: 0.38,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+
+export const mobileListVariants: Variants = {
+  hidden: {},
+
+  visible: {
+    transition: {
+      staggerChildren: 0.055,
+      delayChildren: 0.18,
+    },
+  },
+};
+
+export const mobileItemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -24,
+  },
+
+  visible: {
+    opacity: 1,
+    x: 0,
+
+    transition: {
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+export const mobileFooterVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 12,
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+      delay: 0.45,
+    },
+  },
+};

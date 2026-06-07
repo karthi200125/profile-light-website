@@ -1,98 +1,161 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+
 import Container from "@/components/ui/Container";
 import Logo from "@/components/ui/Logo";
-import { NAV_LINKS1, NAV_LINKS2 } from "@/constants/navigation";
-import Link from "next/link";
+import { NAV_LINKS_LEFT, NAV_LINKS_RIGHT } from "@/constants/navigation";
 import MobileMenu from "./MobileNav";
+import Button from "../ui/Button";
+
+function NavLink({
+    href,
+    label,
+    active,
+}: {
+    href: string;
+    label: string;
+    active: boolean;
+}) {
+    return (
+        <Link
+            href={href}
+            aria-current={active ? "page" : undefined}
+            className={`relative text-sm font-medium transition-colors duration-300
+                  after:absolute after:-bottom-0.5 after:left-0 after:h-px
+                  after:w-full after:origin-left after:scale-x-0 after:bg-white
+                  after:transition-transform after:duration-300
+                  hover:text-white hover:after:scale-x-100
+                  focus-visible:outline focus-visible:outline-2
+                  focus-visible:outline-white/40 focus-visible:rounded-sm
+                  ${active ? "text-white after:scale-x-100" : "text-white/55"}`}
+        >
+            {label}
+        </Link>
+    );
+}
+
+
 export default function Navbar() {
+    const pathname = usePathname();
+
     const [isVisible, setIsVisible] = useState(true);
     const [isScrolled, setIsScrolled] = useState(false);
     const [open, setOpen] = useState(false);
 
+    const lastScrollY = useRef(0);
+    const rafId = useRef<number | null>(null);
+
+    const isActiveLink = (
+        pathname: string,
+        href: string
+    ) => {
+        if (href === "/") {
+            return pathname === "/";
+        }
+
+        return pathname.startsWith(href);
+    };
+
     useEffect(() => {
-        let lastScrollY = window.scrollY;
-
         const handleScroll = () => {
-            const currentScrollY = window.scrollY;
+            if (rafId.current !== null) return;
 
-            setIsScrolled(currentScrollY > 40);
+            rafId.current = requestAnimationFrame(() => {
+                const currentY = window.scrollY;
 
-            if (currentScrollY <= 20) {
-                setIsVisible(true);
-            } else if (currentScrollY > lastScrollY) {
-                setIsVisible(false);
-            } else {
-                setIsVisible(true);
-            }
+                setIsScrolled(currentY > 40);
 
-            lastScrollY = currentScrollY;
+                if (currentY <= 20) {
+                    setIsVisible(true);
+                } else if (currentY > lastScrollY.current) {
+                    setIsVisible(false);
+                } else {
+                    setIsVisible(true);
+                }
+
+                lastScrollY.current = currentY;
+                rafId.current = null;
+            });
         };
 
-        window.addEventListener("scroll", handleScroll, {
-            passive: true,
-        });
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            if (rafId.current !== null) cancelAnimationFrame(rafId.current);
         };
     }, []);
 
+    useEffect(() => {
+        setOpen(false);
+    }, [pathname]);
+
+    const translateY = open || isVisible ? "translate-y-0" : "-translate-y-full";
+
     return (
-        <header
-            className={`fixed inset-x-0 top-0 z-[999] transition-transform duration-500 ease-out ${open
-                ? "translate-y-0"
-                : isVisible
-                    ? "translate-y-0"
-                    : "-translate-y-full"
-                }`}
+        <motion.header
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className={`fixed inset-x-0 top-0 z-[999] transition-transform duration-500 ease-out ${translateY}`}
         >
             <Container>
                 <div
-                    className={`flex h-[72px] items-center justify-between rounded-2xl px-5 transition-all duration-500 lg:px-8 ${isScrolled
-                        ? "mt-2 bg-black/60 backdrop-blur-xl"
-                        : "bg-transparent"
+                    className={`flex h-[72px] items-center justify-between rounded-2xl px-5
+                      transition-all duration-500 lg:px-8
+                      ${isScrolled
+                            ? "mt-2 bg-black/60 shadow-[0_1px_0_0_rgba(255,255,255,0.04)] backdrop-blur-xl"
+                            : "bg-transparent"
                         }`}
                 >
-                    {/* Left Navigation */}
 
-                    <nav className="hidden items-center gap-12 lg:flex text-white">
-                        {NAV_LINKS1.map((link) => (
-                            <Link
-                                key={link.label}
+                    {/* ── Left navigation ── */}
+                    <nav
+                        aria-label="Primary navigation left"
+                        className="hidden items-center gap-10 lg:flex"
+                    >
+                        {NAV_LINKS_LEFT.map((link) => (
+                            <NavLink
+                                key={link.href}
                                 href={link.href}
-                                className="text-sm font-medium text-white/65 transition-colors duration-300 hover:text-white"
-                            >
-                                {link.label}
-                            </Link>
+                                label={link.label}
+                                active={isActiveLink(pathname, link.href)}
+                            />
                         ))}
                     </nav>
 
-                    {/* Logo */}
+                    {/* ── Logo — center ── */}
+                    <Link
+                        href="/"
+                        aria-label={`Go to homepage`}
+                        className="focus-visible:outline focus-visible:outline-2
+                       focus-visible:outline-white/40 focus-visible:rounded-sm"
+                    >
+                        <Logo width={130} height={80} />
+                    </Link>
 
-                    <Logo width={130} height={80} />
-
-                    {/* Right Navigation */}
-
-                    <nav className="hidden items-center gap-12 lg:flex text-white">
-                        {NAV_LINKS2.map((link) => (
-                            <Link
-                                key={link.label}
-                                href={link.href}
-                                className="text-sm font-medium text-white/65 transition-colors duration-300 hover:text-white"
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
+                    {/* ── Right navigation ── */}
+                    <nav
+                        aria-label="Primary navigation right"
+                        className="hidden items-center gap-10 lg:flex"
+                    >
+                        <Button
+                            label="Get Consultation"
+                            href="/contact"
+                            variant="solid"
+                        />
                     </nav>
 
-                    {/* Mobile Menu */}
-
+                    {/* ── Mobile menu trigger ── */}
                     <div className="lg:hidden">
                         <MobileMenu open={open} setOpen={setOpen} />
                     </div>
+
                 </div>
             </Container>
-        </header>
+        </motion.header>
     );
 }
