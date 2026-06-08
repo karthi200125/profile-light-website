@@ -2,26 +2,39 @@
 
 import { motion } from "framer-motion";
 
-import { staggerContainer } from "@/lib/motion";
+import {
+    containerVariants,
+    staggerContainer,
+} from "@/lib/motion";
 
-interface StaggerProps {
+type StaggerProps = {
     children: React.ReactNode;
     className?: string;
-}
+    fast?: boolean;
+    once?: boolean;
+    amount?: number;
+};
 
 export default function Stagger({
     children,
     className,
+    fast = false,
+    once = true,
+    amount = 0.15,
 }: StaggerProps) {
     return (
         <motion.div
             className={className}
-            variants={staggerContainer}
+            variants={
+                fast
+                    ? staggerContainer
+                    : containerVariants
+            }
             initial="hidden"
             whileInView="visible"
             viewport={{
-                once: true,
-                amount: 0.15,
+                once,
+                amount,
             }}
         >
             {children}

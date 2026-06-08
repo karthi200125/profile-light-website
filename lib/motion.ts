@@ -1,154 +1,135 @@
-import { Variants } from "framer-motion";
+import type { Variants } from "framer-motion";
 
-const easeOut: [number, number, number, number] = [
-    0.22,
-    1,
-    0.36,
-    1,
-];
+export const EASE_OUT = [0.16, 1, 0.3, 1] as const;
 
-export const fadeIn: Variants = {
-    hidden: {
-        opacity: 0,
-    },
-    visible: {
-        opacity: 1,
-        transition: {
-            duration: 0.8,
-            ease: easeOut
-        },
-    },
-};
+export const EASE_EXPO = [0.22, 1, 0.36, 1] as const;
 
-export const fadeUp: Variants = {
-    hidden: {
-        opacity: 0,
-        y: 40,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.8,
-            ease: easeOut
-        },
-    },
-};
+export const EASE_QUART = [0.76, 0, 0.24, 1] as const;
 
-export const fadeDown: Variants = {
-    hidden: {
-        opacity: 0,
-        y: -40,
-    },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.8,
-            ease: easeOut
-        },
-    },
-};
-
-export const scaleReveal: Variants = {
-    hidden: {
-        opacity: 0,
-        scale: 0.96,
-    },
-    visible: {
-        opacity: 1,
-        scale: 1,
-        transition: {
-            duration: 0.9,
-            ease: easeOut
-        },
-    },
-};
-
-export const imageReveal: Variants = {
-    hidden: {
-        opacity: 0,
-        scale: 1.08,
-    },
-    visible: {
-        opacity: 1,
-        scale: 1,
-        transition: {
-            duration: 1.2,
-            ease: easeOut
-        },
-    },
-};
-
-export const staggerContainer: Variants = {
-    hidden: {},
-    visible: {
-        transition: {
-            staggerChildren: 0.12,
-        },
-    },
-};
-
-export const staggerFast: Variants = {
-    hidden: {},
-    visible: {
-        transition: {
-            staggerChildren: 0.08,
-        },
-    },
-};
-
-export const slideLeft: Variants = {
-    hidden: {
-        opacity: 0,
-        x: 60,
-    },
-    visible: {
-        opacity: 1,
-        x: 0,
-        transition: {
-            duration: 0.8,
-            ease: easeOut
-        },
-    },
-};
-
-export const slideRight: Variants = {
-    hidden: {
-        opacity: 0,
-        x: -60,
-    },
-    visible: {
-        opacity: 1,
-        x: 0,
-        transition: {
-            duration: 0.8,
-            ease: easeOut
-        },
-    },
-};
 
 export const containerVariants: Variants = {
   hidden: {},
+
   visible: {
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.3,
+      staggerChildren: 0.1,
+      delayChildren: 0.15,
     },
   },
 };
 
-export const fadeUpVariants: Variants = {
+export const staggerContainer: Variants = {
+  hidden: {},
+
+  visible: {
+    transition: {
+      staggerChildren: 0.06,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+export const staggerFast: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+// ─────────────────────────────────────────────────────────────
+// FADE ANIMATIONS
+// ─────────────────────────────────────────────────────────────
+
+export const fadeIn: Variants = {
   hidden: {
     opacity: 0,
-    y: 28,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.8,
+      ease: EASE_OUT,
+    },
+  },
+};
+
+export const fadeUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 32,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.8,
+      ease: EASE_OUT,
+    },
+  },
+};
+
+export const fadeDown: Variants = {
+  hidden: {
+    opacity: 0,
+    y: -32,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: EASE_OUT,
+    },
+  },
+};
+
+export const slideLeft: Variants = {
+  hidden: {
+    opacity: 0,
+    x: 40,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: EASE_OUT,
+    },
+  },
+};
+
+export const slideRight: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -40,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: EASE_OUT,
+    },
+  },
+};
+
+// ─────────────────────────────────────────────────────────────
+// HERO
+// ─────────────────────────────────────────────────────────────
+
+export const fadeUpVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.75,
+      ease: EASE_EXPO,
     },
   },
 };
@@ -156,63 +137,193 @@ export const fadeUpVariants: Variants = {
 export const dividerVariants: Variants = {
   hidden: {
     scaleX: 0,
+    opacity: 0,
     originX: 0,
   },
   visible: {
     scaleX: 1,
+    opacity: 1,
     transition: {
-      duration: 1.1,
-      ease: [0.16, 1, 0.3, 1],
-      delay: 0.5,
+      duration: 1,
+      ease: EASE_EXPO,
+      delay: 0.2,
     },
   },
 };
+
+// ─────────────────────────────────────────────────────────────
+// ADVANCED TEXT REVEALS
+// ─────────────────────────────────────────────────────────────
+
+export const maskRevealVariants: Variants = {
+  hidden: {
+    y: "105%",
+  },
+  visible: {
+    y: 0,
+    transition: {
+      duration: 0.85,
+      ease: EASE_EXPO,
+    },
+  },
+};
+
+export const blurUpVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    filter: "blur(10px)",
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.75,
+      ease: EASE_OUT,
+    },
+  },
+};
+
+// ─────────────────────────────────────────────────────────────
+// IMAGES
+// ─────────────────────────────────────────────────────────────
+
+export const imageReveal: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 1.08,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 1.2,
+      ease: EASE_EXPO,
+    },
+  },
+};
+
+export const clipRevealVariants: Variants = {
+  hidden: {
+    clipPath: "inset(100% 0% 0% 0%)",
+  },
+  visible: {
+    clipPath: "inset(0% 0% 0% 0%)",
+    transition: {
+      duration: 1,
+      ease: EASE_QUART,
+    },
+  },
+};
+
+export const clipRevealHorizontalVariants: Variants = {
+  hidden: {
+    clipPath: "inset(0% 100% 0% 0%)",
+  },
+  visible: {
+    clipPath: "inset(0% 0% 0% 0%)",
+    transition: {
+      duration: 0.8,
+      ease: EASE_EXPO,
+    },
+  },
+};
+
+// ─────────────────────────────────────────────────────────────
+// CARDS
+// ─────────────────────────────────────────────────────────────
+
+export const scaleReveal: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.96,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: EASE_OUT,
+    },
+  },
+};
+
+export const scaleFadeVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.92,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.55,
+      ease: EASE_OUT,
+    },
+  },
+};
+
+export const staggerItemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 18,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: EASE_OUT,
+    },
+  },
+};
+
+// ─────────────────────────────────────────────────────────────
+// NAVBAR
+// ─────────────────────────────────────────────────────────────
 
 export const navbarVariants: Variants = {
   hidden: {
     opacity: 0,
     y: -12,
   },
-
   visible: {
     opacity: 1,
     y: 0,
-
     transition: {
       duration: 0.5,
-      ease: [0.22, 1, 0.36, 1],
+      ease: EASE_EXPO,
     },
   },
 };
+
+// ─────────────────────────────────────────────────────────────
+// MOBILE MENU
+// ─────────────────────────────────────────────────────────────
 
 export const mobilePanelVariants: Variants = {
   hidden: {
     x: "-100%",
   },
-
   visible: {
     x: 0,
-
     transition: {
       duration: 0.48,
-      ease: [0.22, 1, 0.36, 1],
+      ease: EASE_EXPO,
     },
   },
-
   exit: {
     x: "-100%",
-
     transition: {
       duration: 0.38,
-      ease: [0.22, 1, 0.36, 1],
+      ease: EASE_EXPO,
     },
   },
 };
 
-
 export const mobileListVariants: Variants = {
   hidden: {},
-
   visible: {
     transition: {
       staggerChildren: 0.055,
@@ -226,14 +337,12 @@ export const mobileItemVariants: Variants = {
     opacity: 0,
     x: -24,
   },
-
   visible: {
     opacity: 1,
     x: 0,
-
     transition: {
       duration: 0.45,
-      ease: [0.22, 1, 0.36, 1],
+      ease: EASE_EXPO,
     },
   },
 };
@@ -243,15 +352,34 @@ export const mobileFooterVariants: Variants = {
     opacity: 0,
     y: 12,
   },
-
   visible: {
     opacity: 1,
     y: 0,
-
     transition: {
       duration: 0.4,
-      ease: "easeOut",
+      ease: EASE_OUT,
       delay: 0.45,
     },
   },
 };
+
+
+export function buildVariants(duration: number, ease: readonly number[]): {
+  container: Variants;
+  unit: Variants;
+} {
+  return {
+    container: {
+      hidden: {},
+      visible: { transition: { staggerChildren: 0 } },
+    },
+    unit: {
+      hidden: { y: "110%", rotateX: 8 },
+      visible: {
+        y: 0,
+        rotateX: 0,
+        transition: { duration, ease: EASE_OUT },
+      },
+    },
+  };
+}

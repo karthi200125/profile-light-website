@@ -1,5 +1,5 @@
 export const siteConfig = {
-  url: process.env.NEXT_PUBLIC_SITE_URL!,
+  url: process.env.NEXT_PUBLIC_SITE_URL! ?? "http://localhost:3000",
   name: process.env.NEXT_PUBLIC_BUSINESS_NAME!,
   legalName: process.env.NEXT_PUBLIC_LEGAL_NAME!,
   phone: process.env.NEXT_PUBLIC_PHONE!,

@@ -3,12 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
+
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Reveal from "@/components/ui/Reveal";
-
-// ─── Types ────────────────────────────────────────────────────────────────────
+import SplitReveal from "@/components/ui/Splitreveal";
+import Stagger from "@/components/ui/Stagger";
 
 export type FaqItem = {
     question: string;
@@ -16,33 +17,19 @@ export type FaqItem = {
 };
 
 export type FaqSectionProps = {
-    /** Section heading — e.g. "Answers to common questions about profile lighting." */
     heading: string;
-
-    /** Short label shown above the heading in the SectionLabel pill */
     subheading?: string;
-
-    /** The FAQ items to render */
     faqs: FaqItem[];
-
-    /**
-     * Image shown on the left column.
-     * Defaults to /hero-off.png when omitted.
-     */
     image?: {
         src: string;
         alt: string;
     };
 };
 
-// ─── Default values ───────────────────────────────────────────────────────────
-
 const DEFAULT_IMAGE = {
-    src: "/hero-off.png",
+    src: "/hero-off.webp",
     alt: "Profile lighting installation in Bangalore",
 };
-
-// ─── FaqSection ───────────────────────────────────────────────────────────────
 
 export default function FaqSection({
     heading,
@@ -50,99 +37,159 @@ export default function FaqSection({
     faqs,
     image = DEFAULT_IMAGE,
 }: FaqSectionProps) {
-    // Use index as the active key — no dependency on an `id` field
-    const [activeIndex, setActiveIndex] = useState<number | null>(0);
+    const [activeIndex, setActiveIndex] =
+        useState<number | null>(0);
 
     return (
-        <Section id="faq" className="bg-white">
+        <Section
+            id="faq"
+            className="bg-white"
+        >
             <Container>
+
                 <div className="grid gap-12 lg:grid-cols-[48%_52%] lg:gap-16">
 
-                    {/* ── Left: image ── */}
-                    <Reveal>
+                    {/* Image */}
+
+                    <Reveal variant="clip">
                         <div className="relative overflow-hidden">
+
                             <div className="relative aspect-[4/5] lg:h-[780px]">
+
                                 <Image
                                     src={image.src}
                                     alt={image.alt}
                                     fill
-                                    sizes="(max-width: 1024px) 100vw, 48vw"
                                     quality={90}
                                     draggable={false}
+                                    sizes="(max-width:1024px) 100vw, 48vw"
                                     className="object-cover"
                                 />
+
                             </div>
+
                         </div>
                     </Reveal>
 
-                    {/* ── Right: accordion ── */}
+                    {/* Content */}
+
                     <div>
-                        <Reveal>
-                            <SectionLabel>{subheading}</SectionLabel>
+
+                        <Reveal variant="fade">
+                            <SectionLabel>
+                                {subheading}
+                            </SectionLabel>
                         </Reveal>
 
-                        <Reveal>
-                            <h2 className="mt-8 max-w-3xl text-4xl font-medium leading-none tracking-[-0.04em] text-[#111111] md:text-5xl lg:text-[3.5rem]">
-                                {heading}
-                            </h2>
-                        </Reveal>
+                        <div className="mt-8">
 
-                        <div className="mt-14">
+                            <SplitReveal
+                                as="h2"
+                                split="words"
+                                stagger={0.03}
+                                duration={0.75}
+                                className="max-w-3xl text-4xl font-medium leading-none tracking-[-0.04em] text-[#111111] md:text-5xl lg:text-[3.5rem]"
+                                text={heading}
+                            />
+
+                        </div>
+
+                        <Stagger className="mt-14">
+
                             {faqs.map((faq, index) => {
-                                const active = activeIndex === index;
-                                // Zero-padded display number: 01, 02 … 10, 11
-                                const displayId = String(index + 1).padStart(2, "0");
+                                const active =
+                                    activeIndex === index;
+
+                                const displayId =
+                                    String(index + 1).padStart(
+                                        2,
+                                        "0"
+                                    );
 
                                 return (
-                                    <div key={index} className="border-b border-black/10">
-                                        <button
-                                            onClick={() => setActiveIndex(active ? null : index)}
-                                            aria-expanded={active}
-                                            className={`w-full text-left transition-all duration-300 ${active ? "bg-black text-white" : "bg-transparent text-[#111111]"
-                                                }`}
-                                        >
-                                            <div className="flex gap-6 p-6">
-                                                <span
-                                                    className={`mt-1 min-w-[28px] text-xs ${active ? "text-white/50" : "text-black/50"
-                                                        }`}
-                                                >
-                                                    {displayId}
-                                                </span>
+                                    <Reveal
+                                        key={index}
+                                        variant="fade"
+                                    >
+                                        <div className="border-b border-black/10">
 
-                                                <div className="flex-1">
-                                                    <div className="flex items-center justify-between gap-4">
-                                                        <h3 className="text-lg font-medium md:text-xl">
-                                                            {faq.question}
-                                                        </h3>
+                                            <button
+                                                onClick={() =>
+                                                    setActiveIndex(
+                                                        active
+                                                            ? null
+                                                            : index
+                                                    )
+                                                }
+                                                aria-expanded={active}
+                                                className={`w-full text-left transition-all duration-300 ${active
+                                                    ? "bg-black text-white"
+                                                    : "bg-transparent text-[#111111]"
+                                                    }`}
+                                            >
+                                                <div className="flex gap-6 p-6">
 
-                                                        {active ? (
-                                                            <Minus className="h-5 w-5 shrink-0" />
-                                                        ) : (
-                                                            <Plus className="h-5 w-5 shrink-0" />
-                                                        )}
-                                                    </div>
-
-                                                    <div
-                                                        className={`overflow-hidden transition-all duration-500 ${active ? "mt-4 max-h-64 opacity-100" : "max-h-0 opacity-0"
+                                                    <span
+                                                        className={`mt-1 min-w-[28px] text-xs ${active
+                                                            ? "text-white/50"
+                                                            : "text-black/50"
                                                             }`}
                                                     >
-                                                        <p
-                                                            className={`max-w-xl text-sm leading-7 ${active ? "text-white/75" : ""
+                                                        {displayId}
+                                                    </span>
+
+                                                    <div className="flex-1">
+
+                                                        <div className="flex items-center justify-between gap-4">
+
+                                                            <h3 className="text-lg font-medium md:text-xl">
+                                                                {
+                                                                    faq.question
+                                                                }
+                                                            </h3>
+
+                                                            {active ? (
+                                                                <Minus className="h-5 w-5 shrink-0" />
+                                                            ) : (
+                                                                <Plus className="h-5 w-5 shrink-0" />
+                                                            )}
+
+                                                        </div>
+
+                                                        <div
+                                                            className={`overflow-hidden transition-all duration-500 ${active
+                                                                ? "mt-4 max-h-64 opacity-100"
+                                                                : "max-h-0 opacity-0"
                                                                 }`}
                                                         >
-                                                            {faq.answer}
-                                                        </p>
+                                                            <p
+                                                                className={`max-w-xl text-sm leading-7 ${active
+                                                                    ? "text-white/75"
+                                                                    : ""
+                                                                    }`}
+                                                            >
+                                                                {
+                                                                    faq.answer
+                                                                }
+                                                            </p>
+                                                        </div>
+
                                                     </div>
+
                                                 </div>
-                                            </div>
-                                        </button>
-                                    </div>
+                                            </button>
+
+                                        </div>
+                                    </Reveal>
                                 );
                             })}
-                        </div>
+
+                        </Stagger>
+
                     </div>
 
                 </div>
+
             </Container>
         </Section>
     );
