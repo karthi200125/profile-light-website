@@ -104,7 +104,7 @@ export default function Navbar() {
         >
             <Container>
                 <div
-                    className={`flex h-[72px] items-center justify-between rounded-2xl px-5
+                    className={`flex h-[72px] items-center justify-between rounded-2xl px-3
                       transition-all duration-500 lg:px-8
                       ${isScrolled
                             ? "mt-2 bg-black/60 shadow-[0_1px_0_0_rgba(255,255,255,0.04)] backdrop-blur-xl"
@@ -134,7 +134,7 @@ export default function Navbar() {
                         className="focus-visible:outline focus-visible:outline-2
                        focus-visible:outline-white/40 focus-visible:rounded-sm"
                     >
-                        <Logo width={130} height={80} />
+                        <Logo />
                     </Link>
 
                     {/* ── Right navigation ── */}
@@ -143,7 +143,7 @@ export default function Navbar() {
                         className="hidden items-center gap-10 lg:flex"
                     >
                         <Button
-                            label="Get Consultation"
+                            label="Get Quote"
                             href="/contact"
                             variant="solid"
                         />

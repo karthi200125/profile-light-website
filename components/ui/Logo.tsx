@@ -21,12 +21,13 @@ export default function Logo({
             <Image
                 src="/logo.webp"
                 alt="StraightLine Profile Lighting"
-                width={width}
-                height={height}
+                width={130}
+                height={80}
                 priority
                 quality={90}
                 draggable={false}
-                className="object-contain"
+                sizes="130px"
+                className="h-9 w-auto sm:h-12 md:h-14 lg:h-16 object-contain"
             />
         </Link>
     );

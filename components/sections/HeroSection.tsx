@@ -7,43 +7,37 @@ import {
 } from "@/lib/motion";
 
 import { motion } from "framer-motion";
-
 import Image from "next/image";
-
 import { useState } from "react";
 
 import Button from "../ui/Button";
 import LightSwitch from "../ui/LightSwitch";
 import SplitReveal from "../ui/Splitreveal";
 
-const DEFAULT_IMAGES = {
+const IMAGES = {
     off: "/hero-off.webp",
     on: "/hero-on.webp",
+
+    mobileOff: "/mobile-hero-off.webp",
+    mobileOn: "/mobile-hero-on.webp",
 };
 
 export type HeroSectionProps = {
     headline: string | [string, string];
     description: string;
-    images?: {
-        off: string;
-        on: string;
-    };
     eyebrow?: string;
 };
 
 export default function HeroSection({
     headline,
     description,
-    images = DEFAULT_IMAGES,
     eyebrow,
 }: HeroSectionProps) {
-    const [lightsOn, setLightsOn] =
-        useState(false);
+    const [lightsOn, setLightsOn] = useState(false);
 
-    const headlineLines =
-        Array.isArray(headline)
-            ? headline
-            : [headline];
+    const headlineLines = Array.isArray(headline)
+        ? headline
+        : [headline];
 
     return (
         <section
@@ -57,41 +51,61 @@ export default function HeroSection({
                     opacity: lightsOn ? 0 : 1,
                 }}
                 transition={{
-                    duration: 1.4,
+                    duration: 0.8,
                 }}
             >
+                {/* Desktop */}
                 <Image
-                    src={images.off}
+                    src={IMAGES.off}
                     alt=""
                     fill
                     priority
-                    quality={90}
-                    sizes="100vw"
                     draggable={false}
-                    className="object-cover"
+                    sizes="(max-width: 768px) 0vw, 100vw"
+                    className="hidden object-cover md:block"
+                />
+
+                {/* Mobile */}
+                <Image
+                    src={IMAGES.mobileOff}
+                    alt=""
+                    fill
+                    priority
+                    draggable={false}
+                    sizes="(max-width: 768px) 100vw, 0vw"
+                    className="object-cover md:hidden"
                 />
             </motion.div>
 
             {/* ON IMAGE */}
-            <motion.div
-                className="absolute inset-0"
-                animate={{
-                    opacity: lightsOn ? 1 : 0,
-                }}
-                transition={{
-                    duration: 1.4,
-                }}
-            >
-                <Image
-                    src={images.on}
-                    alt=""
-                    fill
-                    priority
-                    quality={90}
-                    sizes="100vw"
-                    className="object-cover"
-                />
-            </motion.div>
+            {lightsOn && (
+                <motion.div
+                    className="absolute inset-0"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    {/* Desktop */}
+                    <Image
+                        src={IMAGES.on}
+                        alt=""
+                        fill
+                        draggable={false}
+                        sizes="(max-width: 768px) 0vw, 100vw"
+                        className="hidden object-cover md:block"
+                    />
+
+                    {/* Mobile */}
+                    <Image
+                        src={IMAGES.mobileOn}
+                        alt=""
+                        fill
+                        draggable={false}
+                        sizes="(max-width: 768px) 100vw, 0vw"
+                        className="object-cover md:hidden"
+                    />
+                </motion.div>
+            )}
 
             {/* OVERLAYS */}
             <div
@@ -114,19 +128,16 @@ export default function HeroSection({
             />
 
             {/* CONTENT */}
-            <div className="relative z-20 mx-auto flex h-full w-full max-w-screen-2xl flex-col justify-end px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+            <div className="relative z-20 mx-auto flex h-full w-full max-w-screen-2xl flex-col justify-end px-5 pb-5 sm:px-6 md:px-8 md:pb-0 lg:px-10 xl:px-12">
                 <div className="w-full">
-
                     {eyebrow && (
                         <motion.p
                             variants={fadeUpVariants}
                             initial="hidden"
                             animate="visible"
-                            className={`mb-4 text-xs font-medium uppercase tracking-[0.2em]
-              transition-colors duration-1000
-              ${lightsOn
-                                    ? "text-white/80"
-                                    : "text-white/40"
+                            className={`mb-4 text-xs font-medium uppercase tracking-[0.2em] transition-colors duration-1000 ${lightsOn
+                                ? "text-white/80"
+                                : "text-white/40"
                                 }`}
                         >
                             {eyebrow}
@@ -136,26 +147,22 @@ export default function HeroSection({
                     <SplitReveal
                         lines={headlineLines}
                         as="h1"
-                        className={`text-[clamp(32px,7vw,100px)] font-light uppercase text-white 
-                            ${lightsOn
-                                ? "text-white"
-                                : "text-white/70"
-                            }
-                            `}
+                        className={`text-[clamp(32px,7vw,100px)] font-light uppercase transition-colors duration-1000 ${lightsOn
+                            ? "text-white"
+                            : "text-white/70"
+                            }`}
                         stagger={0.05}
                         duration={0.85}
                     />
-
 
                     <motion.div
                         variants={dividerVariants}
                         initial="hidden"
                         animate="visible"
                         aria-hidden="true"
-                        className={`my-5 h-px transition-all duration-1000 lg:my-8
-            ${lightsOn
-                                ? "bg-white/15"
-                                : "bg-white/5"
+                        className={`my-5 h-px transition-all duration-1000 lg:my-8 ${lightsOn
+                            ? "bg-white/15"
+                            : "bg-white/5"
                             }`}
                     />
 
@@ -167,11 +174,9 @@ export default function HeroSection({
                     >
                         <motion.p
                             variants={fadeUpVariants}
-                            className={`max-w-[400px] text-[14px] leading-[1.7]
-              transition-colors duration-1000 md:text-[15px]
-              ${lightsOn
-                                    ? "text-white/65"
-                                    : "text-white/40"
+                            className={`max-w-[400px] text-[14px] leading-[1.7] transition-colors duration-1000 md:text-[15px] ${lightsOn
+                                ? "text-white/65"
+                                : "text-white/40"
                                 }`}
                         >
                             {description}
@@ -194,7 +199,6 @@ export default function HeroSection({
                             />
                         </motion.div>
                     </motion.div>
-
                 </div>
             </div>
         </section>
