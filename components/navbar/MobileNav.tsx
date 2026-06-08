@@ -91,9 +91,8 @@ export default function MobileMenu({ open, setOpen }: MobileMenuProps) {
                 aria-controls="mobile-menu-panel"
                 onClick={() => setOpen(true)}
                 className="flex h-10 w-10 items-center justify-center rounded-lg
-                   text-white transition-colors duration-200
-                   hover:bg-white/10 focus-visible:outline
-                   focus-visible:outline-2 focus-visible:outline-white/40"
+                   text-white transition-colors duration-200                   
+                   "
             >
                 <Menu size={22} aria-hidden="true" />
             </button>
@@ -126,15 +125,11 @@ export default function MobileMenu({ open, setOpen }: MobileMenuProps) {
                                 onClick={() => setOpen(false)}
                                 className="flex h-10 w-10 items-center justify-center rounded-lg
                            text-white transition-colors duration-200
-                           hover:bg-white/10 focus-visible:outline
-                           focus-visible:outline-2 focus-visible:outline-white/40"
+                           "
                             >
                                 <X size={22} aria-hidden="true" />
                             </button>
                         </div>
-
-                        {/* ── Divider ── */}
-                        <div className="mx-8 h-px bg-white/[0.06]" aria-hidden="true" />
 
                         {/* ── Navigation links ── */}
                         <motion.nav
@@ -204,7 +199,6 @@ export default function MobileMenu({ open, setOpen }: MobileMenuProps) {
                             animate="visible"
                             className="px-8 py-6"
                         >
-                            <div className="mb-4 h-px bg-white/[0.06]" aria-hidden="true" />
 
                             <p className="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-white/30">
                                 Let&apos;s talk lighting

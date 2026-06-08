@@ -104,18 +104,16 @@ export default function Navbar() {
         >
             <Container>
                 <div
-                    className={`flex h-[72px] items-center justify-between rounded-2xl px-3
-                      transition-all duration-500 lg:px-8
-                      ${isScrolled
-                            ? "mt-2 bg-black/60 shadow-[0_1px_0_0_rgba(255,255,255,0.04)] backdrop-blur-xl"
+                    className={`relative flex h-[72px] items-center rounded-2xl px-5 transition-all duration-500 lg:px-8
+                        ${isScrolled
+                            ? "mt-3 bg-black/60 backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.04)]"
                             : "bg-transparent"
                         }`}
                 >
-
-                    {/* ── Left navigation ── */}
+                    {/* Desktop Left */}
                     <nav
-                        aria-label="Primary navigation left"
-                        className="hidden items-center gap-10 lg:flex"
+                        aria-label="Primary navigation"
+                        className="hidden lg:flex items-center gap-10"
                     >
                         {NAV_LINKS_LEFT.map((link) => (
                             <NavLink
@@ -127,33 +125,29 @@ export default function Navbar() {
                         ))}
                     </nav>
 
-                    {/* ── Logo — center ── */}
-                    <Link
-                        href="/"
-                        aria-label={`Go to homepage`}
-                        className="focus-visible:outline focus-visible:outline-2
-                       focus-visible:outline-white/40 focus-visible:rounded-sm"
-                    >
+                    {/* Logo */}
+                    <div className=" absolute left-1/2 -translate-x-1/2 hidden lg:block">
                         <Logo />
-                    </Link>
+                    </div>
 
-                    {/* ── Right navigation ── */}
-                    <nav
-                        aria-label="Primary navigation right"
-                        className="hidden items-center gap-10 lg:flex"
-                    >
+                    {/* Desktop CTA */}
+                    <div className="ml-auto hidden lg:block">
                         <Button
                             label="Get Quote"
                             href="/contact"
                             variant="solid"
                         />
-                    </nav>
-
-                    {/* ── Mobile menu trigger ── */}
-                    <div className="lg:hidden">
-                        <MobileMenu open={open} setOpen={setOpen} />
                     </div>
 
+                    {/* Mobile */}
+                    <div className="flex w-full items-center justify-between lg:hidden">
+                        <Logo />
+
+                        <MobileMenu
+                            open={open}
+                            setOpen={setOpen}
+                        />
+                    </div>
                 </div>
             </Container>
         </motion.header>
