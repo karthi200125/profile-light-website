@@ -106,7 +106,7 @@ export default function Navbar() {
                 <div
                     className={`relative flex h-[72px] items-center rounded-2xl px-5 transition-all duration-500 lg:px-8
                         ${isScrolled
-                            ? "mt-3 bg-black/60 backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.04)]"
+                            ? "mt-2 bg-black/60 backdrop-blur-xl shadow-[0_1px_0_0_rgba(255,255,255,0.04)]"
                             : "bg-transparent"
                         }`}
                 >

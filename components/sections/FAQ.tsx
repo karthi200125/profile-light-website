@@ -27,7 +27,7 @@ export type FaqSectionProps = {
 };
 
 const DEFAULT_IMAGE = {
-    src: "/hero-off.webp",
+    src: "/faq.png",
     alt: "Profile lighting installation in Bangalore",
 };
 
@@ -51,18 +51,19 @@ export default function FaqSection({
 
                     {/* Image */}
 
-                    <Reveal variant="clip">
+                    <Reveal variant="fade">
                         <div className="relative overflow-hidden">
 
                             <div className="relative aspect-[4/5] lg:h-[780px]">
 
                                 <Image
-                                    src={image.src}
-                                    alt={image.alt}
+                                    src="/frequently-asked-question.png"
+                                    alt="Profile lighting installation and frequently asked questions"
                                     fill
                                     quality={90}
+                                    priority={false}
                                     draggable={false}
-                                    sizes="(max-width:1024px) 100vw, 48vw"
+                                    sizes="(max-width: 1024px) 100vw, 48vw"
                                     className="object-cover"
                                 />
 
