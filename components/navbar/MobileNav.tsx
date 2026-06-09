@@ -111,7 +111,7 @@ export default function MobileMenu({ open, setOpen }: MobileMenuProps) {
                         animate="visible"
                         exit="exit"
                         onKeyDown={handleKeyDown}
-                        className="fixed inset-0 z-[9999] flex h-dvh w-screen flex-col bg-neutral-950"
+                        className="fixed -left-4 -top-2 z-[9999] h-[100dvh] w-[100vw] bg-neutral-950"
                     >
 
                         {/* ── Header ── */}

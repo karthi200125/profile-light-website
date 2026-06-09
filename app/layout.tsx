@@ -11,6 +11,7 @@ import {
 } from "@/lib/schema";
 import WhatsappFloat from "@/components/WhatsappFloat";
 import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-sans",
@@ -175,6 +176,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <Navbar />
         {children}
         <WhatsappFloat />
+        <Footer />
       </body>
     </html>
   );

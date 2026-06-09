@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 import Container from "@/components/ui/Container";
 import Logo from "@/components/ui/Logo";
-import { NAV_LINKS_LEFT, NAV_LINKS_RIGHT } from "@/constants/navigation";
-import MobileMenu from "./MobileNav";
+import { NAV_LINKS_LEFT } from "@/constants/navigation";
 import Button from "../ui/Button";
+import MobileMenu from "./MobileNav";
 
 function NavLink({
     href,
@@ -134,7 +134,7 @@ export default function Navbar() {
                     <div className="ml-auto hidden lg:block">
                         <Button
                             label="Get Quote"
-                            href="/contact"
+                            href="/#contact"
                             variant="solid"
                         />
                     </div>

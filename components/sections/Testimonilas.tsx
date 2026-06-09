@@ -146,7 +146,7 @@ export default function Testimonials() {
 
                                         <Image
                                             src={
-                                                testimonial.image
+                                                '/no-avatar.webp'
                                             }
                                             alt={
                                                 testimonial.name

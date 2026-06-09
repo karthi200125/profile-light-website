@@ -27,7 +27,7 @@ export default function Logo({
                 quality={90}
                 draggable={false}
                 sizes="130px"
-                className="h-9 w-auto sm:h-12 md:h-14 lg:h-16 object-contain"
+                className="h-12 w-auto sm:h-12 md:h-14 lg:h-16 object-contain"
             />
         </Link>
     );

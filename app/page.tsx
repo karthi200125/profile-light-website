@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-import Footer from "@/components/Footer";
 
 import AboutSection from "@/components/sections/About";
 import CTA from "@/components/sections/CTA";
@@ -117,7 +116,7 @@ export default function HomePage() {
         <CTA />
       </main>
 
-      <Footer />
+
     </>
   );
 }

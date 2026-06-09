@@ -188,13 +188,13 @@ export default function HeroSection({
                         >
                             <Button
                                 label="View Projects"
-                                href="/projects"
+                                href="/#projects"
                                 variant="ghost"
                             />
 
                             <Button
                                 label="Contact Us"
-                                href="/contact"
+                                href="/#contact"
                                 variant="ghost"
                             />
                         </motion.div>

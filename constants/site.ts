@@ -20,7 +20,7 @@ export const siteConfig = {
   social: {
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM ?? "",
     youtube: process.env.NEXT_PUBLIC_YOUTUBE ?? "",
-    linkedin: process.env.NEXT_PUBLIC_LINKEDIN ?? "",
+    facebook: process.env.NEXT_PUBLIC_FACEBOOK ?? "",
   },
 
   googlePlaceId: process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID ?? "",

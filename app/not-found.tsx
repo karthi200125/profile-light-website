@@ -1,19 +1,13 @@
+import { NAV_LINKS_LEFT } from "@/constants/navigation";
+import { siteConfig } from "@/constants/site";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { siteConfig } from "@/constants/site";
 
 export const metadata: Metadata = {
   title: `404 — Page Not Found | ${siteConfig.name}`,
   robots: { index: false, follow: false },
 };
 
-const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Locations", href: "/profile-lighting-installation" },
-  { label: "Contact", href: "/contact" },
-] as const;
 
 export default function NotFound() {
   return (
@@ -21,13 +15,13 @@ export default function NotFound() {
       className="relative flex min-h-screen flex-col items-center justify-center
                  overflow-hidden bg-neutral-950 px-6 text-center"
     >
-      
-      
+
+
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-1/2
                    h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2
-                   rounded-full bg-amber-300/5 blur-[120px]"
+                   rounded-full bg-white/5 blur-[120px]"
       />
 
       {/* ── Content ── */}
@@ -70,10 +64,10 @@ export default function NotFound() {
         <div className="flex flex-wrap justify-center gap-4">
           <Link
             href="/"
-            className="group inline-flex items-center gap-3 rounded-full bg-amber-300
+            className="group inline-flex items-center gap-3 rounded-full bg-white
                        px-7 py-3.5 text-sm font-medium text-neutral-900
                        transition-all duration-300 hover:bg-amber-200 hover:gap-4
-                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-300"
+                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
           >
             Back to Home
             <span className="transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true">
@@ -100,7 +94,7 @@ export default function NotFound() {
         {/* Secondary nav */}
         <nav aria-label="Helpful links" className="mt-2">
           <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS_LEFT.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}

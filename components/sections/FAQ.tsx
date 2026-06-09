@@ -57,7 +57,7 @@ export default function FaqSection({
                             <div className="relative aspect-[4/5] lg:h-[780px]">
 
                                 <Image
-                                    src="/frequently-asked-question.png"
+                                    src="/frequently-asked-question.webp"
                                     alt="Profile lighting installation and frequently asked questions"
                                     fill
                                     quality={90}
