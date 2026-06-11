@@ -33,7 +33,7 @@ export type Testimonial = {
   name: string;
   location: string;
   propertyType: string;
-  rating: number; 
+  rating: number;
   review: string;
 };
 
@@ -137,7 +137,7 @@ const createLocation = (
     title: `Profile Lighting Installation in ${name}, Bangalore`,
     metaTitle: `Profile Lighting in ${name} | ${COMPANY}`,
     metaDescription: `Top-rated profile lighting installation in ${name}, Bangalore. Cove lights, false ceiling, linear & smart lighting for homes, villas & offices. Free site visit.`,
-    canonicalPath: `/profile-lighting-installation/${slug}`,
+    canonicalPath: `/${slug}`,
 
     // ── Hero ─────────────────────────────────────────────────
     heroHeadline: `Premium Profile Lighting in ${name}`,
