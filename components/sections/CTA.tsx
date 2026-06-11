@@ -53,7 +53,7 @@ export default function CTA() {
                             <p className="max-w-sm text-lg leading-relaxed text-white/65">
                                 From modern homes and luxury villas to offices and
                                 commercial spaces, we design and install architectural
-                                profile lighting solutions across Bangalore.
+                                profile lighting solutions across Tamilnadu & Bangalore.
                             </p>
                         </Reveal>
 

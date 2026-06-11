@@ -18,7 +18,7 @@ export const siteConfig = {
   },
 
   foundedYear: 2022,
-  serviceArea: "Bangalore",
+  serviceArea: "Tamilnadu , Bangalore",
 
   ogImage: process.env.NEXT_PUBLIC_OG_IMAGE!,
 
@@ -33,5 +33,5 @@ export const siteConfig = {
   priceRange: "₹₹–₹₹₹",
 
   description:
-    "StraightLine creates premium profile lighting solutions tailored to modern homes, villas, offices and commercial spaces across Bangalore.",
+    "StraightLine creates premium profile lighting solutions tailored to modern homes, villas, offices and commercial spaces across Tamilnadu & Bangalore.",
 } as const;

@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 
 import Container from "@/components/ui/Container";
@@ -59,7 +57,7 @@ export default function WhyChooseUs() {
                                 We combine technical expertise, premium profile lighting
                                 components and thoughtful design to create modern lighting
                                 experiences for homes, villas and commercial interiors
-                                across Bangalore.
+                                across Tamilnadu & Bangalore.
                             </p>
                         </Reveal>
                     </div>
