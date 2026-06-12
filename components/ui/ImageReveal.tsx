@@ -14,17 +14,21 @@ export default function ImageReveal({
     className,
 }: ImageRevealProps) {
     return (
-        <motion.div
-            className={className}
-            variants={imageReveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-                once: true,
-                amount: 0.2,
-            }}
+        <div
+            className={`overflow-hidden ${className ?? ""}`}
         >
-            {children}
-        </motion.div>
+            <motion.div
+                variants={imageReveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{
+                    once: true,
+                    amount: 0.25,
+                }}
+                className="h-full w-full"
+            >
+                {children}
+            </motion.div>
+        </div>
     );
 }

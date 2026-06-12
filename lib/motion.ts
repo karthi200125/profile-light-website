@@ -6,6 +6,10 @@ export const EASE_EXPO = [0.22, 1, 0.36, 1] as const;
 
 export const EASE_QUART = [0.76, 0, 0.24, 1] as const;
 
+export const EASE_SMOOTH = [0.22, 1, 0.36, 1] as const;
+export const EASE_FAST = [0.16, 1, 0.3, 1] as const;
+export const EASE_SHARP = [0.76, 0, 0.24, 1] as const;
+
 
 export const containerVariants: Variants = {
   hidden: {},
@@ -58,14 +62,16 @@ export const fadeIn: Variants = {
 export const fadeUp: Variants = {
   hidden: {
     opacity: 0,
-    y: 32,
+    y: 20,
+    scale: 0.98,
   },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
       duration: 0.8,
-      ease: EASE_OUT,
+      ease: EASE_SMOOTH,
     },
   },
 };
@@ -73,14 +79,16 @@ export const fadeUp: Variants = {
 export const fadeDown: Variants = {
   hidden: {
     opacity: 0,
-    y: -32,
+    y: -20,
+    scale: 0.98,
   },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
       duration: 0.8,
-      ease: EASE_OUT,
+      ease: EASE_SMOOTH,
     },
   },
 };
@@ -88,7 +96,8 @@ export const fadeDown: Variants = {
 export const slideLeft: Variants = {
   hidden: {
     opacity: 0,
-    x: 40,
+    x: 24,
+    scale: 0.98,
   },
   visible: {
     opacity: 1,
@@ -103,7 +112,8 @@ export const slideLeft: Variants = {
 export const slideRight: Variants = {
   hidden: {
     opacity: 0,
-    x: -40,
+    x: -24,
+    scale: 0.98,
   },
   visible: {
     opacity: 1,
@@ -122,17 +132,20 @@ export const slideRight: Variants = {
 export const fadeUpVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 24,
+    y: 18,
+    scale: 0.98,
   },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.75,
-      ease: EASE_EXPO,
+      duration: 0.85,
+      ease: EASE_SMOOTH,
     },
   },
 };
+
 
 export const dividerVariants: Variants = {
   hidden: {
@@ -171,16 +184,18 @@ export const maskRevealVariants: Variants = {
 export const blurUpVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 20,
+    y: 16,
+    scale: 0.98,
     filter: "blur(10px)",
   },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     filter: "blur(0px)",
     transition: {
-      duration: 0.75,
-      ease: EASE_OUT,
+      duration: 0.8,
+      ease: EASE_SMOOTH,
     },
   },
 };
@@ -192,17 +207,18 @@ export const blurUpVariants: Variants = {
 export const imageReveal: Variants = {
   hidden: {
     opacity: 0,
-    scale: 1.08,
+    scale: 1.04,
   },
   visible: {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 1.2,
-      ease: EASE_EXPO,
+      duration: 1.4,
+      ease: EASE_SMOOTH,
     },
   },
 };
+
 
 export const clipRevealVariants: Variants = {
   hidden: {
@@ -237,14 +253,14 @@ export const clipRevealHorizontalVariants: Variants = {
 export const scaleReveal: Variants = {
   hidden: {
     opacity: 0,
-    scale: 0.96,
+    scale: 0.98,
   },
   visible: {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.8,
-      ease: EASE_OUT,
+      duration: 0.75,
+      ease: EASE_SMOOTH,
     },
   },
 };
@@ -252,14 +268,14 @@ export const scaleReveal: Variants = {
 export const scaleFadeVariants: Variants = {
   hidden: {
     opacity: 0,
-    scale: 0.92,
+    scale: 0.97,
   },
   visible: {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.55,
-      ease: EASE_OUT,
+      duration: 0.65,
+      ease: EASE_SMOOTH,
     },
   },
 };
@@ -267,14 +283,16 @@ export const scaleFadeVariants: Variants = {
 export const staggerItemVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 18,
+    y: 14,
+    scale: 0.98,
   },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.55,
-      ease: EASE_OUT,
+      duration: 0.65,
+      ease: EASE_SMOOTH,
     },
   },
 };
@@ -286,14 +304,14 @@ export const staggerItemVariants: Variants = {
 export const navbarVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: -12,
+    y: -8,
   },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
-      ease: EASE_EXPO,
+      duration: 0.7,
+      ease: EASE_SMOOTH,
     },
   },
 };
