@@ -1,15 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 import Container from "@/components/ui/Container";
+import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Reveal from "@/components/ui/Reveal";
 import SplitReveal from "@/components/ui/Splitreveal";
 import Stagger from "@/components/ui/Stagger";
+import ImageReveal from "../ui/ImageReveal";
 
 export type FaqItem = {
     question: string;
@@ -51,26 +52,23 @@ export default function FaqSection({
 
                     {/* Image */}
 
-                    <Reveal variant="fade">
-                        <div className="relative overflow-hidden">
+                    <ImageReveal
+                        className="relative overflow-hidden"
+                    >
+                        <div className="relative aspect-[4/5] lg:h-[780px]">
 
-                            <div className="relative aspect-[4/5] lg:h-[780px]">
-
-                                <Image
-                                    src="/frequently-asked-question.webp"
-                                    alt="Profile lighting installation and frequently asked questions"
-                                    fill
-                                    quality={90}
-                                    priority={false}
-                                    draggable={false}
-                                    sizes="(max-width: 1024px) 100vw, 48vw"
-                                    className="object-cover"
-                                />
-
-                            </div>
+                            <Image
+                                src="/frequently-asked-question.webp"
+                                alt="Profile lighting installation and frequently asked questions"
+                                fill
+                                quality={90}
+                                draggable={false}
+                                sizes="(max-width: 1024px) 100vw, 48vw"
+                                className="object-cover"
+                            />
 
                         </div>
-                    </Reveal>
+                    </ImageReveal>
 
                     {/* Content */}
 

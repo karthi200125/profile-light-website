@@ -1,14 +1,15 @@
-"use client";
+'use client'
 
-import { useEffect, useId } from "react";
+import Button from "@/components/ui/Button"
 import Link from "next/link";
+import { useEffect, useId } from "react";
 type ErrorPageProps = {
     error: Error & { digest?: string };
     reset: () => void;
 };
 
 function reportError(error: Error & { digest?: string }, referenceId: string) {
-    if (process.env.NODE_ENV === "production") {        
+    if (process.env.NODE_ENV === "production") {
         console.error("[ErrorBoundary]", referenceId, error);
     } else {
         console.error("[ErrorBoundary — dev]", { referenceId, digest: error.digest, error });
@@ -27,7 +28,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
         <main
             className="relative flex min-h-screen flex-col items-center justify-center
                  overflow-hidden bg-neutral-950 px-6 text-center"
-        >            
+        >
             {/* ── Radial glow — red tint signals error state ── */}
             <div
                 aria-hidden="true"
@@ -56,12 +57,6 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
 
                 {/* Headline + body */}
                 <div className="-mt-4 flex flex-col items-center gap-4">
-                    <h1
-                        className="font-display font-light uppercase text-white"
-                        style={{ fontSize: "clamp(28px, 5vw, 56px)", letterSpacing: "-0.04em", lineHeight: 1 }}
-                    >
-                        Short Circuit.
-                    </h1>
 
                     <p className="max-w-sm text-sm leading-7 text-white/50">
                         An unexpected error occurred. Our team has been notified.
@@ -75,21 +70,11 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
                 {/* Actions */}
                 <div className="flex flex-wrap justify-center gap-4">
                     {/* Reset — retries the failed segment render */}
-                    <button
-                        onClick={reset}
-                        className="group inline-flex items-center gap-3 rounded-full bg-amber-300
-                       px-7 py-3.5 text-sm font-medium text-neutral-900
-                       transition-all duration-300 hover:bg-amber-200 hover:gap-4
-                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-300"
-                    >
-                        Try Again
-                        <span
-                            className="transition-transform duration-300 group-hover:rotate-180"
-                            aria-hidden="true"
-                        >
-                            ↺
-                        </span>
-                    </button>
+                    <Button
+                        label="Try Again"
+                        href="/#contact"
+                        variant="solid"
+                    />
 
                     {/* Home */}
                     <Link

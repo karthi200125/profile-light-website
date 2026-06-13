@@ -204,21 +204,33 @@ export const blurUpVariants: Variants = {
 // IMAGES
 // ─────────────────────────────────────────────────────────────
 
-export const imageReveal: Variants = {
-  hidden: {
-    opacity: 0,
-    scale: 1.04,
-  },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 1.4,
-      ease: EASE_SMOOTH,
+export const curtainVariants = {
+    hidden: {
+        clipPath: "inset(100% 0% 0% 0%)",
     },
-  },
+    visible: {
+        clipPath: "inset(0% 0% 0% 0%)",
+        transition: {
+            duration: 1.1,
+            ease: [0.76, 0, 0.24, 1],
+        },
+    },
 };
 
+export const imageVariants = {
+    hidden: {
+        scale: 1.12,
+        filter: "brightness(0.85)",
+    },
+    visible: {
+        scale: 1,
+        filter: "brightness(1)",
+        transition: {
+            duration: 1.4,
+            ease: [0.22, 1, 0.36, 1],
+        },
+    },
+};
 
 export const clipRevealVariants: Variants = {
   hidden: {

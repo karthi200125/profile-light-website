@@ -7,6 +7,7 @@ import Reveal from "@/components/ui/Reveal";
 import SplitReveal from "@/components/ui/Splitreveal";
 
 import { PROJECTS } from "@/data/projects";
+import ImageReveal from "../ui/ImageReveal";
 
 export default function Projects() {
     return (
@@ -65,8 +66,13 @@ export default function Projects() {
                             {/* Before After Images */}
 
                             <div className="grid gap-4 lg:grid-cols-2">
-                                <div className="relative overflow-hidden">
-                                    <div className="absolute left-4 top-4 z-10 bg-black px-4 py-2 text-xs font-medium tracking-wider text-white">
+
+                                {/* BEFORE */}
+
+                                <ImageReveal
+                                    className="relative overflow-hidden"
+                                >
+                                    <div className="absolute left-4 top-4 z-20 bg-black px-4 py-2 text-xs font-medium tracking-wider text-white">
                                         BEFORE
                                     </div>
 
@@ -75,14 +81,19 @@ export default function Projects() {
                                             src={project.beforeImage}
                                             alt={`${project.title} Before`}
                                             fill
-                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                            sizes="(max-width: 1024px) 100vw, 50vw"
                                             className="object-cover"
                                         />
                                     </div>
-                                </div>
+                                </ImageReveal>
 
-                                <div className="relative overflow-hidden">
-                                    <div className="absolute left-4 top-4 z-10 bg-black px-4 py-2 text-xs font-medium tracking-wider text-white">
+                                {/* AFTER */}
+
+                                <ImageReveal
+                                    delay={0.15}
+                                    className="relative overflow-hidden"
+                                >
+                                    <div className="absolute left-4 top-4 z-20 bg-black px-4 py-2 text-xs font-medium tracking-wider text-white">
                                         AFTER
                                     </div>
 
@@ -91,11 +102,12 @@ export default function Projects() {
                                             src={project.afterImage}
                                             alt={`${project.title} After`}
                                             fill
-                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                            sizes="(max-width: 1024px) 100vw, 50vw"
                                             className="object-cover"
                                         />
                                     </div>
-                                </div>
+                                </ImageReveal>
+
                             </div>
 
                             {/* Project Details */}

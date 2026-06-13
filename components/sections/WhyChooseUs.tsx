@@ -64,14 +64,14 @@ export default function WhyChooseUs() {
                     </div>
 
                     <ImageReveal
-                        className="relative min-h-[320px] border-t border-white/10 lg:border-l lg:border-t-0"
+                        className="relative min-h-[320px] h-full border-t border-white/10 lg:border-l lg:border-t-0"
                     >
                         <Image
                             src="/why-choose-us.webp"
                             alt="Premium profile lighting installation"
                             fill
                             sizes="(max-width:1024px) 100vw, 360px"
-                            className="object-cover transition-transform duration-1000 hover:scale-[1.04]"
+                            className="object-cover"
                         />
                     </ImageReveal>
 
