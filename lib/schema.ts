@@ -27,6 +27,8 @@ export function buildOrganizationSchema() {
             url: `${siteConfig.url}/logo.webp`,
         },
 
+        foundingDate: String(siteConfig.foundedYear),
+
         contactPoint: {
             "@type": "ContactPoint",
             telephone: siteConfig.phone,
@@ -34,6 +36,7 @@ export function buildOrganizationSchema() {
             areaServed: "IN",
             availableLanguage: [
                 "English",
+                "Tamil",
                 "Kannada",
                 "Hindi",
             ],
@@ -60,6 +63,7 @@ export function buildLocalBusinessSchema() {
         "@id": `${siteConfig.url}/#localbusiness`,
 
         name: siteConfig.name,
+        description: siteConfig.description,
 
         image: siteConfig.ogImage,
 
@@ -71,23 +75,29 @@ export function buildLocalBusinessSchema() {
 
         priceRange: siteConfig.priceRange,
 
+        foundingDate: String(siteConfig.foundedYear),
+
         address: {
             "@type": "PostalAddress",
             ...siteConfig.address,
         },
 
-        geo: {
-            "@type": "GeoCoordinates",
-            latitude: 12.9716,
-            longitude: 77.5946,
-        },
-
-        areaServed: {
-            "@type": "City",
-            name: "Bangalore",
-        },
+        areaServed: [
+            {
+                "@type": "City",
+                name: "Bangalore",
+            },
+            {
+                "@type": "State",
+                name: "Tamil Nadu",
+            },
+        ],
 
         sameAs: Object.values(siteConfig.social).filter(Boolean),
+
+        ...(siteConfig.googlePlaceId && {
+            identifier: siteConfig.googlePlaceId,
+        }),
     };
 }
 
@@ -111,37 +121,11 @@ export function buildWebsiteSchema() {
         publisher: {
             "@id": `${siteConfig.url}/#organization`,
         },
+
+        inLanguage: "en-IN",
     };
 }
 
-// ─────────────────────────────────────────────────────────────
-// GLOBAL SERVICE
-// ─────────────────────────────────────────────────────────────
-
-export function buildServiceSchema() {
-    return {
-        "@context": "https://schema.org",
-        "@type": "Service",
-
-        "@id": `${siteConfig.url}/#service`,
-
-        name: "Profile Lighting Installation",
-
-        serviceType: "Profile Lighting Installation",
-
-        description:
-            "Professional profile lighting installation services for homes, villas, apartments, offices and commercial spaces across Bangalore.",
-
-        provider: {
-            "@id": `${siteConfig.url}/#organization`,
-        },
-
-        areaServed: {
-            "@type": "City",
-            name: "Bangalore",
-        },
-    };
-}
 
 // ─────────────────────────────────────────────────────────────
 // FAQ

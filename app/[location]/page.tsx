@@ -21,6 +21,7 @@ import {
     buildLocationSchema,
     buildFaqSchema,
     buildBreadcrumbSchema,
+    buildReviewSchema,
     toJsonLd,
 } from "@/lib/schema";
 
@@ -138,23 +139,20 @@ export default async function LocationPage({
 
         buildFaqSchema(data.faqs),
 
+        buildReviewSchema(data),
+
         buildBreadcrumbSchema([
             {
                 name: "Home",
                 href: "/",
             },
-
             {
-                name:
-                    "Profile Lighting Installation",
-                href:
-                    "/",
+                name: "Profile Lighting Installation",
+                href: "/",
             },
-
             {
                 name: data.name,
-                href:
-                    data.canonicalPath,
+                href: data.canonicalPath,
             },
         ]),
     ];
@@ -173,9 +171,7 @@ export default async function LocationPage({
                     />
                 )
             )}
-
-            <Navbar />
-
+            
             <main>
                 <HeroSection
                     eyebrow={`${data.name} · Bangalore`}
@@ -184,7 +180,7 @@ export default async function LocationPage({
                     }
                     description={
                         data.heroSubheadline
-                    }                    
+                    }
                 />
 
                 <AboutSection />
@@ -205,8 +201,7 @@ export default async function LocationPage({
 
                 <CTA />
             </main>
-
-            <Footer />
+            
         </>
     );
 }

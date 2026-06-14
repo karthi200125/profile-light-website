@@ -9,6 +9,7 @@ import {
   buildOrganizationSchema,
   buildLocalBusinessSchema,
   toJsonLd,
+  buildWebsiteSchema,
 } from "@/lib/schema";
 import WhatsappFloat from "@/components/WhatsappFloat";
 import Navbar from "@/components/navbar/Navbar";
@@ -91,7 +92,6 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — Premium Profile Lighting in Bangalore & Tamilnadu`,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@yourhandle",
   },
 
   // ── Icons ─────────────────────────────────────────────────────────────────
@@ -102,9 +102,7 @@ export const metadata: Metadata = {
   },
 
   // ── Verification ──────────────────────────────────────────────────────────
-  verification: {
-    google: "REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_TOKEN",
-  },
+  verification: {},
 
   // ── Crawling ──────────────────────────────────────────────────────────────
   robots: {
@@ -122,8 +120,6 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
 };
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
-
 
 export default function RootLayout({
   children,
@@ -137,43 +133,34 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: toJsonLd(buildOrganizationSchema()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: toJsonLd(buildLocalBusinessSchema()) }}
+          dangerouslySetInnerHTML={{
+            __html: toJsonLd(buildOrganizationSchema()),
+          }}
         />
 
-        {/* ── Google Tag Manager ── */}
-        {GTM_ID && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');`,
-            }}
-          />
-        )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: toJsonLd(buildLocalBusinessSchema()),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: toJsonLd(buildWebsiteSchema()),
+          }}
+        />
       </head>
 
       <body className="bg-neutral-950 font-sans antialiased">
-        {GTM_ID && (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-              height="0"
-              width="0"
-              style={{ display: "none", visibility: "hidden" }}
-            />
-          </noscript>
-        )}
         <Navbar />
         {children}
-        <GoogleAnalytics
-          gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!}
-        />
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics
+            gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
+          />
+        )}
         <WhatsappFloat />
         <Footer />
       </body>
