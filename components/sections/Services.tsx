@@ -52,7 +52,7 @@ export default function Services() {
                             key={service.id}
                             variant="fade"
                         >
-                            <article className="group relative h-[520px] overflow-hidden bg-black">
+                            <article className="relative h-[520px] overflow-hidden bg-black">
 
                                 {/* Background Image */}
                                 <div className="absolute inset-0 overflow-hidden">
@@ -60,20 +60,21 @@ export default function Services() {
                                         src={service.image}
                                         alt={service.title}
                                         fill
-                                        className="scale-110 object-cover opacity-0 transition-all duration-700 group-hover:scale-100 group-hover:opacity-100"
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
+                                        className="object-cover"
                                     />
                                 </div>
 
                                 {/* Base Overlay */}
-                                <div className="absolute inset-0 bg-black transition-all duration-500 group-hover:bg-black/55" />
+                                <div className="absolute inset-0 bg-black transition-all duration-500 bg-black/55" />
 
                                 {/* Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-0 transition-opacity duration-500" />
 
                                 {/* Content */}
                                 <div className="relative z-10 flex h-full flex-col justify-between p-8">
 
-                                    <span className="text-3xl font-light text-white">
+                                    <span className="text-5xl font-light text-white">
                                         {service.id}
                                     </span>
 

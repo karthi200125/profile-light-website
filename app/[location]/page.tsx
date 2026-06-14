@@ -9,7 +9,7 @@ import AboutSection from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import Projects from "@/components/sections/FeaturedProjects";
-import Testimonials from "@/components/sections/Testimonilas";
+import Testimonials from "@/components/sections/Testimonials";
 import FaqSection from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 

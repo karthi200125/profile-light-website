@@ -31,7 +31,7 @@ function NavLink({
                   hover:text-white hover:after:scale-x-100
                   focus-visible:outline focus-visible:outline-2
                   focus-visible:outline-white/40 focus-visible:rounded-sm
-                  ${active ? "text-white after:scale-x-100" : "text-white/55"}`}
+                  ${active ? "text-white after:scale-x-100" : "text-white/75"}`}
         >
             {label}
         </Link>

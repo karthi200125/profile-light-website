@@ -17,21 +17,17 @@ type SplitRevealProps = {
     amount?: number;
 };
 
-// Reduced-motion fallback
 const simpleFade: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.5 } },
 };
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
 
 function splitToUnits(text: string, mode: SplitMode): string[] {
-    if (mode === "chars") return text.split("");
-    // Words: split on spaces, keep non-empty tokens
+    if (mode === "chars") return text.split("");    
     return text.split(" ").filter(Boolean);
 }
 
-// ─── AnimatedUnit — one word or character ────────────────────────────────────
 
 function AnimatedUnit({
     unit,
@@ -53,7 +49,6 @@ function AnimatedUnit({
     }
 
     return (
-        // Clip container: overflow:hidden hides the unit before it rises in
         <span
             style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom" }}
             aria-hidden="true"
@@ -71,7 +66,6 @@ function AnimatedUnit({
     );
 }
 
-// ─── SplitReveal ─────────────────────────────────────────────────────────────
 
 export default function SplitReveal({
     text,

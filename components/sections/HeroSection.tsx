@@ -57,7 +57,7 @@ export default function HeroSection({
                 {/* Desktop */}
                 <Image
                     src={IMAGES.off}
-                    alt=""
+                    alt="Modern profile lighting installation"
                     fill
                     priority
                     draggable={false}
@@ -68,7 +68,7 @@ export default function HeroSection({
                 {/* Mobile */}
                 <Image
                     src={IMAGES.mobileOff}
-                    alt=""
+                    alt="Modern profile lighting installation"
                     fill
                     priority
                     draggable={false}
@@ -88,7 +88,7 @@ export default function HeroSection({
                     {/* Desktop */}
                     <Image
                         src={IMAGES.on}
-                        alt=""
+                        alt="Modern profile lighting installation"
                         fill
                         draggable={false}
                         sizes="(max-width: 768px) 0vw, 100vw"
@@ -98,7 +98,7 @@ export default function HeroSection({
                     {/* Mobile */}
                     <Image
                         src={IMAGES.mobileOn}
-                        alt=""
+                        alt="Modern profile lighting installation"
                         fill
                         draggable={false}
                         sizes="(max-width: 768px) 100vw, 0vw"

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 type ButtonProps = {
     label: string;
@@ -88,7 +87,7 @@ export default function Button({
                 href={href}
                 target={target}
                 rel={target === "_blank" ? "noopener noreferrer" : undefined}
-                className={cn(styles[variant], className)}
+                className={`${styles[variant]} ${className ?? ""}`}
             >
                 {content}
             </a>
@@ -96,7 +95,10 @@ export default function Button({
     }
 
     return (
-        <Link href={href} className={cn(styles[variant], className)}>
+        <Link
+            href={href}
+            className={`${styles[variant]} ${className ?? ""}`}
+        >
             {content}
         </Link>
     );

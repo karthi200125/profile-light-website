@@ -1,7 +1,6 @@
 'use client'
 
-import Button from "@/components/ui/Button"
-import Link from "next/link";
+import Button from "@/components/ui/Button";
 import { useEffect, useId } from "react";
 type ErrorPageProps = {
     error: Error & { digest?: string };
@@ -77,26 +76,11 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
                     />
 
                     {/* Home */}
-                    <Link
+                    <Button
+                        label="Back to Home"
                         href="/"
-                        className="group relative inline-flex items-center gap-2 pb-1 text-sm
-                       text-white/70 transition-colors duration-300 hover:text-white
-                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/40"
-                    >
-                        Back to Home
-                        <span
-                            className="transition-transform duration-300 group-hover:translate-x-0.5"
-                            aria-hidden="true"
-                        >
-                            ↗
-                        </span>
-                        <span className="absolute bottom-0 left-0 h-px w-full bg-white/20" aria-hidden="true" />
-                        <span
-                            className="absolute bottom-0 left-0 h-px w-0 bg-white/60
-                         transition-all duration-300 group-hover:w-full"
-                            aria-hidden="true"
-                        />
-                    </Link>
+                        variant="ghost"
+                    />
                 </div>
 
                 {/* Reference ID — visible to users so they can quote it when contacting support */}

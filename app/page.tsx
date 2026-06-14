@@ -7,7 +7,7 @@ import FaqSection from "@/components/sections/FAQ";
 import Projects from "@/components/sections/FeaturedProjects";
 import HeroSection from "@/components/sections/HeroSection";
 import Services from "@/components/sections/Services";
-import Testimonials from "@/components/sections/Testimonilas";
+import Testimonials from "@/components/sections/Testimonials";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 
 import { homeFaq, homeHero } from "@/data/home";

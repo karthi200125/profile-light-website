@@ -133,7 +133,7 @@ export default function MobileMenu({ open, setOpen }: MobileMenuProps) {
                         initial="hidden"
                         animate="visible"
                         aria-label="Mobile navigation"
-                        className="flex flex-1 flex-col justify-center px-4"
+                        className="flex flex-1 flex-col justify-center px-4 mt-5"
                     >
                         {MOBILE_NAV_LINKS.map((link) => {
                             const isActive = isActiveLink(pathname, link.href);

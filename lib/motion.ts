@@ -1,34 +1,44 @@
 import type { Variants } from "framer-motion";
 
-export const EASE_OUT = [0.16, 1, 0.3, 1] as const;
+// ─────────────────────────────────────────────────────────────
+// SINGLE SOURCE OF TRUTH FOR ALL EASING VALUES
+// ─────────────────────────────────────────────────────────────
 
-export const EASE_EXPO = [0.22, 1, 0.36, 1] as const;
+export const EASING_CONFIG = {
+  out: [0.16, 1, 0.3, 1] as const,
+  expo: [0.22, 1, 0.36, 1] as const,
+  quart: [0.76, 0, 0.24, 1] as const,
+} as const;
 
-export const EASE_QUART = [0.76, 0, 0.24, 1] as const;
+export const EASE_OUT = EASING_CONFIG.out;
+export const EASE_EXPO = EASING_CONFIG.expo;
+export const EASE_QUART = EASING_CONFIG.quart;
 
-export const EASE_SMOOTH = [0.22, 1, 0.36, 1] as const;
-export const EASE_FAST = [0.16, 1, 0.3, 1] as const;
-export const EASE_SHARP = [0.76, 0, 0.24, 1] as const;
 
+export const EASE_SMOOTH = EASING_CONFIG.expo;   
+export const EASE_FAST = EASING_CONFIG.out;    
+export const EASE_SHARP = EASING_CONFIG.quart; 
+
+// ─────────────────────────────────────────────────────────────
+// STAGGER CONTAINERS
+// ─────────────────────────────────────────────────────────────
 
 export const containerVariants: Variants = {
   hidden: {},
-
   visible: {
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.15,
+      staggerChildren: 0.06,
+      delayChildren: 0.05,
     },
   },
 };
 
 export const staggerContainer: Variants = {
   hidden: {},
-
   visible: {
     transition: {
-      staggerChildren: 0.06,
-      delayChildren: 0.1,
+      staggerChildren: 0.05,
+      delayChildren: 0.05,
     },
   },
 };
@@ -54,7 +64,7 @@ export const fadeIn: Variants = {
     opacity: 1,
     transition: {
       duration: 0.8,
-      ease: EASE_OUT,
+      ease: EASING_CONFIG.out,
     },
   },
 };
@@ -71,7 +81,7 @@ export const fadeUp: Variants = {
     scale: 1,
     transition: {
       duration: 0.8,
-      ease: EASE_SMOOTH,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
@@ -88,7 +98,7 @@ export const fadeDown: Variants = {
     scale: 1,
     transition: {
       duration: 0.8,
-      ease: EASE_SMOOTH,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
@@ -104,7 +114,7 @@ export const slideLeft: Variants = {
     x: 0,
     transition: {
       duration: 0.8,
-      ease: EASE_OUT,
+      ease: EASING_CONFIG.out,
     },
   },
 };
@@ -120,7 +130,7 @@ export const slideRight: Variants = {
     x: 0,
     transition: {
       duration: 0.8,
-      ease: EASE_OUT,
+      ease: EASING_CONFIG.out,
     },
   },
 };
@@ -141,11 +151,10 @@ export const fadeUpVariants: Variants = {
     scale: 1,
     transition: {
       duration: 0.85,
-      ease: EASE_SMOOTH,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
-
 
 export const dividerVariants: Variants = {
   hidden: {
@@ -158,7 +167,7 @@ export const dividerVariants: Variants = {
     opacity: 1,
     transition: {
       duration: 1,
-      ease: EASE_EXPO,
+      ease: EASING_CONFIG.expo,
       delay: 0.2,
     },
   },
@@ -176,7 +185,7 @@ export const maskRevealVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.85,
-      ease: EASE_EXPO,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
@@ -195,7 +204,7 @@ export const blurUpVariants: Variants = {
     filter: "blur(0px)",
     transition: {
       duration: 0.8,
-      ease: EASE_SMOOTH,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
@@ -204,32 +213,32 @@ export const blurUpVariants: Variants = {
 // IMAGES
 // ─────────────────────────────────────────────────────────────
 
-export const curtainVariants = {
-    hidden: {
-        clipPath: "inset(100% 0% 0% 0%)",
+export const curtainVariants: Variants = {
+  hidden: {
+    clipPath: "inset(100% 0% 0% 0%)",
+  },
+  visible: {
+    clipPath: "inset(0% 0% 0% 0%)",
+    transition: {
+      duration: 1.1,
+      ease: EASING_CONFIG.quart,
     },
-    visible: {
-        clipPath: "inset(0% 0% 0% 0%)",
-        transition: {
-            duration: 1.1,
-            ease: [0.76, 0, 0.24, 1],
-        },
-    },
+  },
 };
 
-export const imageVariants = {
-    hidden: {
-        scale: 1.12,
-        filter: "brightness(0.85)",
+export const imageVariants: Variants = {
+  hidden: {
+    scale: 1.12,
+    filter: "brightness(0.85)",
+  },
+  visible: {
+    scale: 1,
+    filter: "brightness(1)",
+    transition: {
+      duration: 1.4,
+      ease: EASING_CONFIG.expo,
     },
-    visible: {
-        scale: 1,
-        filter: "brightness(1)",
-        transition: {
-            duration: 1.4,
-            ease: [0.22, 1, 0.36, 1],
-        },
-    },
+  },
 };
 
 export const clipRevealVariants: Variants = {
@@ -240,7 +249,7 @@ export const clipRevealVariants: Variants = {
     clipPath: "inset(0% 0% 0% 0%)",
     transition: {
       duration: 1,
-      ease: EASE_QUART,
+      ease: EASING_CONFIG.quart,
     },
   },
 };
@@ -253,7 +262,7 @@ export const clipRevealHorizontalVariants: Variants = {
     clipPath: "inset(0% 0% 0% 0%)",
     transition: {
       duration: 0.8,
-      ease: EASE_EXPO,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
@@ -272,7 +281,7 @@ export const scaleReveal: Variants = {
     scale: 1,
     transition: {
       duration: 0.75,
-      ease: EASE_SMOOTH,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
@@ -287,7 +296,7 @@ export const scaleFadeVariants: Variants = {
     scale: 1,
     transition: {
       duration: 0.65,
-      ease: EASE_SMOOTH,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
@@ -304,7 +313,7 @@ export const staggerItemVariants: Variants = {
     scale: 1,
     transition: {
       duration: 0.65,
-      ease: EASE_SMOOTH,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
@@ -323,7 +332,7 @@ export const navbarVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.7,
-      ease: EASE_SMOOTH,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
@@ -340,14 +349,14 @@ export const mobilePanelVariants: Variants = {
     x: 0,
     transition: {
       duration: 0.48,
-      ease: EASE_EXPO,
+      ease: EASING_CONFIG.expo,
     },
   },
   exit: {
     x: "-100%",
     transition: {
       duration: 0.38,
-      ease: EASE_EXPO,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
@@ -372,7 +381,7 @@ export const mobileItemVariants: Variants = {
     x: 0,
     transition: {
       duration: 0.45,
-      ease: EASE_EXPO,
+      ease: EASING_CONFIG.expo,
     },
   },
 };
@@ -387,14 +396,20 @@ export const mobileFooterVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.4,
-      ease: EASE_OUT,
+      ease: EASING_CONFIG.out,
       delay: 0.45,
     },
   },
 };
 
+// ─────────────────────────────────────────────────────────────
+// UTILITY
+// ─────────────────────────────────────────────────────────────
 
-export function buildVariants(duration: number, ease: readonly number[]): {
+export function buildVariants(
+  duration: number,
+  ease: readonly number[]
+): {
   container: Variants;
   unit: Variants;
 } {
@@ -408,7 +423,7 @@ export function buildVariants(duration: number, ease: readonly number[]): {
       visible: {
         y: 0,
         rotateX: 0,
-        transition: { duration, ease: EASE_OUT },
+        transition: { duration, ease: EASING_CONFIG.out },
       },
     },
   };

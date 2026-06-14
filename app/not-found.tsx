@@ -1,3 +1,4 @@
+import Button from "@/components/ui/Button";
 import { NAV_LINKS_LEFT } from "@/constants/navigation";
 import { siteConfig } from "@/constants/site";
 import type { Metadata } from "next";
@@ -62,33 +63,19 @@ export default function NotFound() {
 
         {/* Primary CTA */}
         <div className="flex flex-wrap justify-center gap-4">
-          <Link
-            href="/"
-            className="group inline-flex items-center gap-3 rounded-full bg-white
-                       px-7 py-3.5 text-sm font-medium text-neutral-900
-                       transition-all duration-300 hover:bg-amber-200 hover:gap-4
-                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
-          >
-            Back to Home
-            <span className="transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true">
-              ↗
-            </span>
-          </Link>
 
-          <Link
-            href="/contact"
-            className="group relative inline-flex items-center gap-2 pb-1 text-sm
-                       text-white/70 transition-colors duration-300 hover:text-white
-                       focus-visible:outline focus-visible:outline-2 focus-visible:outline-white/40"
-          >
-            Contact Us
-            <span className="transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true">
-              ↗
-            </span>
-            <span className="absolute bottom-0 left-0 h-px w-full bg-white/20" aria-hidden="true" />
-            <span className="absolute bottom-0 left-0 h-px w-0 bg-white/60
-                             transition-all duration-300 group-hover:w-full" aria-hidden="true" />
-          </Link>
+          <Button
+            label="Back to Home"
+            href="/"
+            variant="solid"
+          />
+
+          <Button
+            label="View Projects"
+            href="/#contact"
+            variant="ghost"
+          />
+
         </div>
 
         {/* Secondary nav */}

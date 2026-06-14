@@ -1,5 +1,9 @@
 import Link from "next/link";
-// import { Instagram, Youtube, Facebook } from "lucide-react";
+import {
+    FaInstagram,
+    FaYoutube,
+    FaFacebookF,
+} from "react-icons/fa";
 
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
@@ -30,7 +34,7 @@ export default function Footer() {
                                     <p className="mt-6 max-w-sm text-white/60">
                                         {siteConfig.description}
                                     </p>
-                                    
+
                                     <div className="mt-8 flex items-center gap-4">
 
                                         {siteConfig.social.instagram && (
@@ -40,7 +44,7 @@ export default function Footer() {
                                                 rel="noopener noreferrer"
                                                 className="text-white/50 transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
                                             >
-                                                {/* <Instagram size={18} /> */}
+                                                <FaInstagram size={18} />
                                             </a>
                                         )}
 
@@ -51,7 +55,7 @@ export default function Footer() {
                                                 rel="noopener noreferrer"
                                                 className="text-white/50 transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
                                             >
-                                                {/* <Youtube size={18} /> */}
+                                                <FaYoutube size={18} />
                                             </a>
                                         )}
 
@@ -62,7 +66,7 @@ export default function Footer() {
                                                 rel="noopener noreferrer"
                                                 className="text-white/50 transition-all duration-300 hover:-translate-y-0.5 hover:text-white"
                                             >
-                                                {/* <Facebook size={18} /> */}
+                                                <FaFacebookF size={18} />
                                             </a>
                                         )}
 
