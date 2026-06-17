@@ -96,9 +96,9 @@ export const metadata: Metadata = {
 
   // ── Icons ─────────────────────────────────────────────────────────────────
   icons: {
-    icon: [{ url: "/favicon.ico" }],
+    icon: [{ url: "/favicon.png" }],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-    shortcut: [{ url: "/favicon.ico" }],
+    shortcut: [{ url: "/favicon.png" }],
   },
 
   // ── Verification ──────────────────────────────────────────────────────────
