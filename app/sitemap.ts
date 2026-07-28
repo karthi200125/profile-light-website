@@ -29,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "yearly",
             priority: 0.3,
         },
+        {
+            url: createUrl("/projects"),
+            lastModified: new Date(),
+            changeFrequency: "weekly",
+            priority: 0.9,
+        },
     ];
 
     const locationPages: MetadataRoute.Sitemap =

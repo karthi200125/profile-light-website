@@ -1,25 +1,36 @@
-import Image from "next/image";
-
 import Container from "@/components/ui/Container";
+import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Reveal from "@/components/ui/Reveal";
 import SplitReveal from "@/components/ui/Splitreveal";
 
-import { PROJECTS } from "@/data/projects";
-import ImageReveal from "../ui/ImageReveal";
+import Button from "../Button";
+import FeaturedProjectCard from "../FeaturedProjectCard";
 
-export default function Projects() {
+import { getFeaturedProjects } from "@/action/project/queries";
+
+export default async function FeaturedProjects() {
+    const projects = await getFeaturedProjects();
+
+    if (projects.length === 0) {
+        return null;
+    }
+
     return (
         <Section
             id="projects"
             className="bg-white"
         >
             <Container>
+
+                {/* Section Header */}
+
                 <Reveal variant="fade">
+
                     <SectionLabel>
                         Recent Projects
                     </SectionLabel>
+
                 </Reveal>
 
                 <div className="mt-8 flex flex-col gap-6 border-t border-black/10 pt-8 lg:flex-row lg:items-end lg:justify-between">
@@ -33,119 +44,57 @@ export default function Projects() {
                         text="Profile lighting projects crafted for homes, offices and commercial interiors."
                     />
 
-                    <Reveal
+                    {/* <Reveal
                         variant="blur"
                         delay={0.15}
                     >
+
                         <p className="max-w-md text-lg leading-relaxed text-black/60">
-                            Explore selected projects showcasing premium profile lighting installations across Bangalore.
+                            Explore selected projects showcasing premium
+                            profile lighting installations across Bangalore
+                            and Tamil Nadu.
                         </p>
-                    </Reveal>
+
+                    </Reveal> */}
 
                 </div>
 
+                {/* Featured Projects */}
 
                 <div className="mt-20 space-y-24">
-                    {PROJECTS.map((project) => (
-                        <article
-                            key={project.title}
-                            className="border-b border-black/10 pb-20 last:border-none"
-                        >
-                            {/* Heading */}
 
-                            <div className="mb-10">
-                                <h3 className="text-3xl font-medium tracking-[-0.03em] text-[#111111] md:text-5xl">
-                                    {project.title}
-                                </h3>
+                    {projects.map((project, index) => (
 
-                                <p className="mt-4 max-w-3xl text-lg leading-relaxed text-black/60">
-                                    {project.description}
-                                </p>
-                            </div>
+                        <FeaturedProjectCard
+                            key={project.id}
+                            project={project}
+                            priority={index === 0}
+                            reverse={index % 2 === 1}
+                        />
 
-                            {/* Before After Images */}
-
-                            <div className="grid gap-4 lg:grid-cols-2">
-
-                                {/* BEFORE */}
-
-                                <ImageReveal
-                                    className="relative overflow-hidden"
-                                >
-                                    <div className="absolute left-4 top-4 z-20 bg-black px-4 py-2 text-xs font-medium tracking-wider text-white">
-                                        BEFORE
-                                    </div>
-
-                                    <div className="relative aspect-[16/10]">
-                                        <Image
-                                            src={project.beforeImage}
-                                            alt={`${project.title} Before`}
-                                            fill
-                                            sizes="(max-width: 1024px) 100vw, 50vw"
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                </ImageReveal>
-
-                                {/* AFTER */}
-
-                                <ImageReveal
-                                    delay={0.15}
-                                    className="relative overflow-hidden"
-                                >
-                                    <div className="absolute left-4 top-4 z-20 bg-black px-4 py-2 text-xs font-medium tracking-wider text-white">
-                                        AFTER
-                                    </div>
-
-                                    <div className="relative aspect-[16/10]">
-                                        <Image
-                                            src={project.afterImage}
-                                            alt={`${project.title} After`}
-                                            fill
-                                            sizes="(max-width: 1024px) 100vw, 50vw"
-                                            className="object-cover"
-                                        />
-                                    </div>
-                                </ImageReveal>
-
-                            </div>
-
-                            {/* Project Details */}
-
-                            <div className="mt-8 grid gap-8 border-t border-black/10 pt-8 md:grid-cols-3">
-                                <div>
-                                    <p className="mb-2 text-xs uppercase tracking-[0.14em] text-black/40">
-                                        Project Type
-                                    </p>
-
-                                    <p className="text-base text-[#111111]">
-                                        {project.type}
-                                    </p>
-                                </div>
-
-                                <div>
-                                    <p className="mb-2 text-xs uppercase tracking-[0.14em] text-black/40">
-                                        Location
-                                    </p>
-
-                                    <p className="text-base text-[#111111]">
-                                        {project.location}
-                                    </p>
-                                </div>
-
-                                <div>
-                                    <p className="mb-2 text-xs uppercase tracking-[0.14em] text-black/40">
-                                        Design Focus
-                                    </p>
-
-                                    <p className="text-base leading-relaxed text-black/70">
-                                        {project.focus}
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
                     ))}
+
                 </div>
+
+                {/* CTA */}
+
+                <Reveal
+                    variant="fade"
+                    delay={0.2}
+                >
+
+                    <div className="mt-20 flex justify-center">
+
+                        <Button
+                            label="Explore All Projects"
+                            href="/projects"
+                            variant="solidBlack"
+                        />
+
+                    </div>
+
+                </Reveal>
+
             </Container>
         </Section>
     );

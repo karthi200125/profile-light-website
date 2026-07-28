@@ -1,15 +1,15 @@
 import Image from "next/image";
 
 import Container from "@/components/ui/Container";
+import Reveal from "@/components/ui/Reveal";
 import Section from "@/components/ui/Section";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Button from "@/components/ui/Button";
-import Reveal from "@/components/ui/Reveal";
-import Stagger from "@/components/ui/Stagger";
 import SplitReveal from "@/components/ui/Splitreveal";
+import Stagger from "@/components/ui/Stagger";
 
 import { WHY_CHOOSE_US } from "@/data/WhyChooseUs";
 import ImageReveal from "../ui/ImageReveal";
+import Button from "../Button";
 
 export default function WhyChooseUs() {
     return (

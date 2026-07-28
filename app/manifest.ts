@@ -24,7 +24,20 @@ export default function manifest(): MetadataRoute.Manifest {
             "home",
             "lifestyle",
         ],
-        
+
+        icons: [
+            {
+                src: "/favicon.png",
+                sizes: "256x256",
+                type: "image/png",
+            },            
+            {
+                src: "/apple-touch-icon.png",
+                sizes: "1056x1024",
+                type: "image/png",
+            },
+        ],
+
         prefer_related_applications: false,
     };
 }

@@ -13,10 +13,10 @@ export default function robots(): MetadataRoute.Robots {
                     "/api/",
                     "/admin/",
                     "/_next/",
-                    "/studio/",   
+                    "/studio/",
                 ],
             },
-            
+
             { userAgent: "GPTBot", disallow: "/" },
             { userAgent: "ChatGPT-User", disallow: "/" },
             { userAgent: "CCBot", disallow: "/" },
@@ -31,6 +31,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
 
         sitemap: `${siteConfig.url}/sitemap.xml`,
-        host: siteConfig.url,
+        host: siteConfig.url.replace(/^https?:\/\//, ""),
     };
 }

@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import Container from "@/components/ui/Container";
 import Logo from "@/components/ui/Logo";
 import { NAV_LINKS_LEFT } from "@/constants/navigation";
-import Button from "../ui/Button";
+import Button from "../Button";
 import MobileMenu from "./MobileNav";
 
 function NavLink({
@@ -100,7 +100,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className={`fixed inset-x-0 top-0 z-[999] transition-transform duration-500 ease-out ${translateY}`}
+            className={`fixed inset-x-0 top-0 z-[99] transition-transform duration-500 ease-out ${translateY}`}
         >
             <Container>
                 <div
