@@ -1,7 +1,6 @@
 "use client";
 
 import CreateProjectButton from "@/components/CreateProjectButton";
-import SearchProjects from "./SearchProjects";
 
 interface AdminHeaderProps {
     search: string;
@@ -33,10 +32,10 @@ export default function AdminHeader({
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
 
-                <SearchProjects
+                {/* <SearchProjects
                     value={search}
                     onChange={onSearchChange}
-                />
+                /> */}
 
                 <CreateProjectButton />
             </div>

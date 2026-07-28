@@ -7,11 +7,11 @@ import { useState } from "react";
 import type { Project } from "@prisma/client";
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 import ProjectDialog from "./ProjectDialog";
 import DeleteProjectDialog from "./DeleteProjectDialog";
 import ProjectStatusBadge from "./ProjectStatusBadge";
 import ProjectTypeBadge from "./ProjectTypeBadge";
+import { Button } from "@/components/ui/button";
 
 export type ProjectRowData = Project;
 
