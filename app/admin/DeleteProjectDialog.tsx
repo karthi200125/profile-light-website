@@ -1,10 +1,12 @@
 "use client";
 
-import { useTransition, useState } from "react";
+import type { Project } from "@prisma/client";
 import { Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import type { Project } from "@prisma/client";
+import { useState, useTransition } from "react";
 
+import { deleteProject } from "@/action/project/action";
+import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
@@ -13,8 +15,6 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { deleteProject } from "@/action/project/action";
 
 interface DeleteProjectDialogProps {
     project: Project;
