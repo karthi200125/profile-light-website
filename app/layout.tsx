@@ -4,6 +4,9 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 import "./globals.css";
 
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
+
 import { siteConfig } from "@/constants/site";
 import {
   buildOrganizationSchema,
@@ -164,6 +167,8 @@ export default function RootLayout({
         )}
         <WhatsappFloat />
         <Footer />
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
