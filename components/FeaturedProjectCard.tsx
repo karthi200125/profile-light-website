@@ -4,7 +4,7 @@ import type { Project } from "@prisma/client";
 import Reveal from "@/components/ui/Reveal";
 
 import BeforeAfter from "./BeforeAfter";
-import Button from "./Button";
+import Button from "./CustomButton";
 import ProjectMeta from "./ProjectMeta";
 
 interface FeaturedProjectCardProps {

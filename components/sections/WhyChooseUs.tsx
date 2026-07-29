@@ -9,7 +9,7 @@ import Stagger from "@/components/ui/Stagger";
 
 import { WHY_CHOOSE_US } from "@/data/WhyChooseUs";
 import ImageReveal from "../ui/ImageReveal";
-import Button from "../Button";
+import Button from "../CustomButton";
 
 export default function WhyChooseUs() {
     return (

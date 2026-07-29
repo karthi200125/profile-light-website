@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { containerVariants, blurUpVariants, fadeUpVariants, dividerVariants } from "@/lib/motion";
-import Button from "../Button";
+import Button from "../CustomButton";
 
 interface HeroContentProps {
     eyebrow?: string;

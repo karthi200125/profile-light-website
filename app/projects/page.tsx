@@ -4,7 +4,7 @@ import Section from "@/components/ui/Section";
 import SectionLabel from "@/components/ui/SectionLabel";
 import SplitReveal from "@/components/ui/Splitreveal";
 
-import Button from "@/components/Button";
+import Button from "@/components/CustomButton";
 import FeaturedProjectCard from "@/components/FeaturedProjectCard";
 
 import { getPublishedProjects } from "@/action/project/queries";

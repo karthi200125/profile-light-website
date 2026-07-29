@@ -63,8 +63,7 @@ export default function ProjectForm({ project, onSuccess, onCancel }: ProjectFor
     });
 
     const { control, handleSubmit, setValue, watch, formState: { errors } } = form;
-
-    const titleValue = watch("title");
+    
     const beforeImage = watch("beforeImage");
     const beforeImageId = watch("beforeImageId");
     const afterImage = watch("afterImage");

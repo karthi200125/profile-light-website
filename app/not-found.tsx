@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/CustomButton";
 import { NAV_LINKS_LEFT } from "@/constants/navigation";
 import { siteConfig } from "@/constants/site";
 import type { Metadata } from "next";

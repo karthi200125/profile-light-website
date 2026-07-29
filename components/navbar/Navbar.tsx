@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import Container from "@/components/ui/Container";
 import Logo from "@/components/ui/Logo";
 import { NAV_LINKS_LEFT } from "@/constants/navigation";
-import Button from "../Button";
+import Button from "../CustomButton";
 import MobileMenu from "./MobileNav";
 
 function NavLink({
