@@ -1,8 +1,8 @@
 "use client";
 
+import { blurUpVariants, containerVariants, dividerVariants, fadeUpVariants } from "@/lib/motion";
 import { motion } from "framer-motion";
-import { containerVariants, blurUpVariants, fadeUpVariants, dividerVariants } from "@/lib/motion";
-import Button from "../CustomButton";
+import CustomButton from "../CustomButton";
 
 interface HeroContentProps {
     eyebrow?: string;
@@ -37,8 +37,8 @@ export default function HeroContent({ eyebrow, headlineLines, description }: Her
                 </motion.p>
 
                 <motion.div variants={fadeUpVariants} className="flex flex-wrap items-center gap-6">
-                    <Button label="View Projects" href="/projects" variant="ghost" />
-                    <Button label="Contact Us" href="/#contact" variant="ghost" />
+                    <CustomButton label="View Projects" href="/projects" variant="ghost" />
+                    <CustomButton label="Contact Us" href="/#contact" variant="ghost" />
                 </motion.div>
             </div>
 

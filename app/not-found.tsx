@@ -1,4 +1,4 @@
-import Button from "@/components/CustomButton";
+import CustomButton from "@/components/CustomButton";
 import { NAV_LINKS_LEFT } from "@/constants/navigation";
 import { siteConfig } from "@/constants/site";
 import type { Metadata } from "next";
@@ -64,13 +64,13 @@ export default function NotFound() {
         {/* Primary CTA */}
         <div className="flex flex-wrap justify-center gap-4">
 
-          <Button
+          <CustomButton
             label="Back to Home"
             href="/"
             variant="solid"
           />
 
-          <Button
+          <CustomButton
             label="View Projects"
             href="/#contact"
             variant="ghost"

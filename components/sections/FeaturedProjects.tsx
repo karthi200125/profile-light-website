@@ -4,7 +4,7 @@ import Section from "@/components/ui/Section";
 import SectionLabel from "@/components/ui/SectionLabel";
 import SplitReveal from "@/components/ui/Splitreveal";
 
-import Button from "../CustomButton";
+import CustomButton from "../CustomButton";
 import FeaturedProjectCard from "../FeaturedProjectCard";
 
 import { getFeaturedProjects } from "@/action/project/queries";
@@ -85,7 +85,7 @@ export default async function FeaturedProjects() {
 
                     <div className="mt-20 flex justify-center">
 
-                        <Button
+                        <CustomButton
                             label="Explore All Projects"
                             href="/projects"
                             variant="solidBlack"

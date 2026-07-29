@@ -8,7 +8,7 @@ type ButtonProps = {
   target?: "_blank" | "_self";
 };
 
-export default function Button({
+export default function CustomButton({
   label,
   href,
   variant = "solid",

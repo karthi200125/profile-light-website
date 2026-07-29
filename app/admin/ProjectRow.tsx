@@ -11,7 +11,7 @@ import ProjectDialog from "./ProjectDialog";
 import DeleteProjectDialog from "./DeleteProjectDialog";
 import ProjectStatusBadge from "./ProjectStatusBadge";
 import ProjectTypeBadge from "./ProjectTypeBadge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 
 export type ProjectRowData = Project;
 

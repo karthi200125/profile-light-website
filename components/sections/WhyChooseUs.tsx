@@ -8,8 +8,8 @@ import SplitReveal from "@/components/ui/Splitreveal";
 import Stagger from "@/components/ui/Stagger";
 
 import { WHY_CHOOSE_US } from "@/data/WhyChooseUs";
+import CustomButton from "../CustomButton";
 import ImageReveal from "../ui/ImageReveal";
-import Button from "../CustomButton";
 
 export default function WhyChooseUs() {
     return (
@@ -97,7 +97,7 @@ export default function WhyChooseUs() {
                             delay={0.15}
                         >
                             <div className="mt-10">
-                                <Button
+                                <CustomButton
                                     label="View Projects"
                                     href="/projects"
                                     variant="solid"

@@ -4,7 +4,7 @@ import Section from "@/components/ui/Section";
 import SectionLabel from "@/components/ui/SectionLabel";
 import SplitReveal from "@/components/ui/Splitreveal";
 
-import Button from "@/components/CustomButton";
+import CustomButton from "@/components/CustomButton";
 import FeaturedProjectCard from "@/components/FeaturedProjectCard";
 
 import { getPublishedProjects } from "@/action/project/queries";
@@ -101,7 +101,7 @@ export default async function ProjectsPage() {
                             delay={0.25}
                         >
                             <div className="mt-12 flex justify-center">
-                                <Button
+                                <CustomButton
                                     label="Get Free Consultation"
                                     href="/contact"
                                     variant="solid"

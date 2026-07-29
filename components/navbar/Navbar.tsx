@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import Container from "@/components/ui/Container";
 import Logo from "@/components/ui/Logo";
 import { NAV_LINKS_LEFT } from "@/constants/navigation";
-import Button from "../CustomButton";
+import CustomButton from "../CustomButton";
 import MobileMenu from "./MobileNav";
 
 function NavLink({
@@ -132,7 +132,7 @@ export default function Navbar() {
 
                     {/* Desktop CTA */}
                     <div className="ml-auto hidden lg:block">
-                        <Button
+                        <CustomButton
                             label="Get Quote"
                             href="/#contact"
                             variant="solid"
